@@ -2,14 +2,13 @@
   import { page } from "$app/stores";
   import { data } from '$lib/OMG_THIS_IS_HACKY_BUT_ITD_BE_A_DATABASE.js';
   import { base, assets } from '$app/paths';
-  import { iiif_root, root } from "$lib/site_params";
   //const assets = ``;
   const { collection, pid } = $page.params
   import { onMount } from 'svelte';
   const item = data.filter(d => d.pid == $page.params.pid)[0]
 	onMount(async () => {
     const dragon = import('openseadragon')
-    const manifestUrl = `/iiif/${pid}/manifest.json`;
+    const manifestUrl = `${base}/iiif/${pid}/manifest.json`;
     const remote_root = assets
     const tiles = fetch(manifestUrl).then(d => d.json())
     .then(data =>
