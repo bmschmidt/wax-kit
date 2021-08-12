@@ -1,5 +1,6 @@
 <script>
   export let datum;
+  import { base } from '$app/paths';
   export let pid;
   import {thumbnail} from '$lib/iiif'
   let img_thumb 
@@ -12,7 +13,7 @@
 
 {#if datum && pid}
   <div class=thumb id={pid}>
-    <a href="/{datum.collection}/{pid}/">
+    <a href="{base}/{datum.collection}/{pid}/">
       <figure>
         {#await img_thumb}
         [Looking for thumbnail]

@@ -5,7 +5,7 @@
   //const assets = ``;
   const { collection, pid } = $page.params
   import { onMount } from 'svelte';
-  const item = data.filter(d => d.pid == $page.params.pid)[0]
+  const item = data.filter(d => d.pid == $page.params.pid)[0] || {label: "Not found"}
 	onMount(async () => {
     const dragon = import('openseadragon')
     const manifestUrl = `${base}/iiif/${pid}/manifest.json`;

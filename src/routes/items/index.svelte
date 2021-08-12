@@ -1,5 +1,6 @@
 <script>
   import {data} from '$lib/OMG_THIS_IS_HACKY_BUT_ITD_BE_A_DATABASE.js';  
+  import { base } from '$app/paths';
   const vals = new Map()
   const fields = Object.keys(data[0])
 </script>
@@ -19,7 +20,7 @@ Waiting for data....
   <ul>
     {#each fields as field}
     {#if field.length < 80}
-    <li><a href=/items/{field}>{field}</a></li>
+    <li><a href={base}/items/{field}>{field}</a></li>
     {/if}
     {/each}
   </ul>

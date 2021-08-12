@@ -1,12 +1,14 @@
 <script>
 	import { page } from '$app/stores';
 	import logo from './svelte-logo.svg';
+	import { base, assets } from '$app/paths';
+
 </script>
 
 <header>
 	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
+		<a href="https://minicomp.github.io/wax/">
+			Inspired by Wax 🐝
 		</a>
 	</div>
 
@@ -15,11 +17,11 @@
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z"/>
 		</svg>
 		<ul>
-			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Home</a></li>
-			<li class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">About</a></li>
-			<li class:active={$page.path === '/nara'}><a sveltekit:prefetch href="/nara">NARA collection</a></li>
-			<li class:active={$page.path === '/items'}><a sveltekit:prefetch href="/items">Item categories</a></li>
-			<li class:active={$page.path === '/table'}><a sveltekit:prefetch href="/table">Data Table</a></li>
+			<li class:active={$page.path === '/'}><a sveltekit:prefetch href={base == '' ? "/" : base }>Home</a></li>
+			<li class:active={$page.path === '/about'}><a sveltekit:prefetch href={base}/about>About</a></li>
+			<li class:active={$page.path === '/nara'}><a sveltekit:prefetch href={base}/nara>NARA collection</a></li>
+			<li class:active={$page.path === '/items'}><a sveltekit:prefetch href={base}/items>Item categories</a></li>
+			<li class:active={$page.path === '/table'}><a sveltekit:prefetch href={base}/table>Data Table</a></li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z"/>

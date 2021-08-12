@@ -446,7 +446,7 @@ a007963988_18,"Kadoshnikoff, Dimitry: Immigration Visa and Alien Registration",G
 
 
 const data_1 = csvParse(raw_data
-  .replace("/", "∕")) // The second character here is not an ascii slash; it's U+2215, division slash, so that they don't mess up url links.
+  .replaceAll("/", "∕")) // The second character here is not an ascii slash; it's U+2215, division slash, so that they don't mess up url links.
   .filter(d => d.pid)
 
 for (let datum of data_1) {

@@ -1,6 +1,7 @@
 <script>
   import {data} from '$lib/OMG_THIS_IS_HACKY_BUT_ITD_BE_A_DATABASE.js';  
   import { page } from "$app/stores";
+  import { base, assets } from '$app/paths';
   const { field, value } = $page.params
   const vals = new Map()
   data.filter(d => d[field] !== undefined && d[field] !== "").forEach(d => {
@@ -24,7 +25,7 @@ Waiting for data....
   <ul>
     {#each [...vals.entries()] as [match, count] }
         {#if match.length < 80}
-    <li><a href="/items/{encodeURIComponent(field)}/{encodeURIComponent(match)}">{match} ({count})</a></li>
+    <li><a href="{base}/items/{encodeURIComponent(field)}/{encodeURIComponent(match)}">{match} ({count})</a></li>
     {/if}
     {/each}
   </ul>
