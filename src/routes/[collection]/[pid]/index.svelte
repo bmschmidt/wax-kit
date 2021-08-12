@@ -5,10 +5,11 @@
   //const assets = ``;
   const { collection, pid } = $page.params
   import { onMount } from 'svelte';
+  const manifestUrl = `${base}/iiif/${pid}/manifest.json`;
   const item = data.filter(d => d.pid == $page.params.pid)[0] || {label: "Not found"}
 	onMount(async () => {
     const dragon = import('openseadragon')
-    const manifestUrl = `${base}/iiif/${pid}/manifest.json`;
+    
     const remote_root = assets
     const tiles = fetch(manifestUrl).then(d => d.json())
     .then(data =>
@@ -43,6 +44,8 @@
   {item.label}
 </h1>
 <div id="osd" class="image-viewer"></div>
+<!--This link is necessary to ensure the manifest is statically generated.-->
+<a href={manifestUrl}>IIIF manifest for this item.</a>
 
 <dl>
   {#each Object.entries(item) as [k, v]}
