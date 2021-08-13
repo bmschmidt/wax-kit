@@ -1,10 +1,17 @@
+<script context="module">
+  
+</script>
+
 <script>
   export let datum;
   import { base } from '$app/paths';
   export let pid;
   import {thumbnail} from '$lib/iiif'
   let img_thumb 
-  if (pid) {img_thumb = thumbnail(pid)}
+  if (pid) {
+    img_thumb = thumbnail(pid)
+    img_thumb.then(d => console.log(d))
+  }
   else if (datum == undefined) {
 
   }
@@ -18,7 +25,7 @@
         {#await img_thumb}
         [Looking for thumbnail]
         {:then url}
-        <img src={url} alt="Improve alt-text: {datum.label}" style="width:100%" />
+        <img src="{url}" alt="Improve alt-text: {datum.label}" style="width:100%" />
         <figcaption>{datum.label}</figcaption>
         {/await}
       </figure>

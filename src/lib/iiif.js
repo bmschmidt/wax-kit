@@ -2,11 +2,11 @@ import { root, iiif_root } from '$lib/site_params.js';
 
 import {data} from '$lib/manifest.js';
 
-
 const img_cache = {};
 
 export async function thumbnail(pid) {
-  return manifest(pid)['thumbnail'];
+  const man = await manifest(pid);
+  return man['thumbnail'];
 }
 
 export async function get_images(pid) {
@@ -16,7 +16,6 @@ export async function get_images(pid) {
   let images;  
   images = data.filter(d => d.pid==pid)[0]['wax:images']
   const id = images[0]
-  console.log(`${iiif_root}/${id}/info.json`)
   const promises = images
     .map(id => `${iiif_root}/${id}/info.json`)
     .map(d => fetch(d)
@@ -41,7 +40,7 @@ export async function manifest(pid) {
       "@type": "sc:Manifest",
       "metadata": Object.entries(d).filter(([label, value]) => label && value).map(([label, value]) => ({label: label, value: value})),
       "label": `${d.label}`, // Controversial. 
-      "thumbnail": `${iiif_root}/${pid}/full/250,/0/default.jpg`,
+      "thumbnail": `${first_image_id}/full/250,/0/default.jpg`,
       "viewingDirection": "left-to-right",
       "viewingHint": "individuals",
       "sequences": sequences,
