@@ -11,10 +11,12 @@ export async function thumbnail(pid) {
 
 export async function get_images(pid) {
   if (img_cache[pid]) {
-//    return img_cache[pid];
+    return img_cache[pid];
   }
   let images;  
   images = data.filter(d => d.pid==pid)[0]['wax:images']
+  const id = images[0]
+  console.log(`${iiif_root}/${id}/info.json`)
   const promises = images
     .map(id => `${iiif_root}/${id}/info.json`)
     .map(d => fetch(d)
