@@ -6,21 +6,19 @@ import {data} from '$lib/manifest.js';
 const img_cache = {};
 
 export async function thumbnail(pid) {
-  const images = await get_images(pid);
-  if (images.length === 0) {
-    return 'http://made-up.com/default.png'
-  }
-  const img = images[0];
-  return `${img['@id']}/full/250,/0/default.jpg`
+  return manifest(pid)['thumbnail'];
 }
 
 export async function get_images(pid) {
   if (img_cache[pid]) {
-    return img_cache[pid];
+//    return img_cache[pid];
   }
   let images;  
   images = data.filter(d => d.pid==pid)[0]['wax:images']
-  const promises = images.map(id => `${iiif_root}/${id}/info.json`).map(d => fetch(d).then(r => r.json()));
+  const promises = images
+    .map(id => `${iiif_root}/${id}/info.json`)
+    .map(d => fetch(d)
+    .then(r => r.json()));
   const responses = await Promise.all(promises);
   img_cache[pid] = responses;
   return responses;
@@ -53,18 +51,19 @@ export async function manifest(pid) {
 
 export function img_to_canvas(img) {
   const id = img['@id']
-  const canvas = `${root}/iiif/canvas/${id}.json`
+  const filename = id.split('/').pop();
+  const canvas = `${root}/iiif/canvas/${filename}.json`
   return {
     "@type": "sc:Canvas",
     "@id": canvas,
     "label": "front",
     "width": 2501,
     "height": 4331,
-    "thumbnail": `${iiif_root}/${id}/full/250,/0/default.jpg`,
+    "thumbnail": `${iiif_root}/${filename}/full/250,/0/default.jpg`,
     "images": [
       {
         "@type": "oa:Annotation",
-        "@id": `${root}/iiif/annotation/${id}.json`,
+        "@id": `${root}/iiif/annotation/${filename}.json`,
         "motivation": "sc:painting",
         "resource": {
           "@id": `${id}/full/full/0/default.jpg`,
