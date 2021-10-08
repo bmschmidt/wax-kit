@@ -20,11 +20,9 @@
 
 <div class="content">
 	<h1>About</h1>
-
-
-	This is a live-rendered sveltekit app. The neat thing about sveltekit, though, is that 
-	it like some other JS frameworks can also serve as a static site renderer, so maybe
-	you're actually seeing flat HTML. How would you even know???
+	This is a Svelte-Kit app. All the files contained in it can be edited
+	in the folder "/src/routes/NAME.svelte"; for instance, this page 
+	is located at "/src/routes/about.svelte".
 
 </div>
 

@@ -10,7 +10,7 @@
 </main>
 
 <footer>
-	Made.
+	A wax-kit project.
 </footer>
 
 <style>

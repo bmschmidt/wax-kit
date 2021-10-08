@@ -2,29 +2,30 @@
   "name": "~TODO~",
   "version": "0.0.1",
   "scripts": {
-    "dev": "svelte-kit dev --https",
+    "dev": "svelte-kit dev",
     "build": "svelte-kit build",
     "preview": "svelte-kit preview",
     "lint": "prettier --check . && eslint --ignore-path .gitignore .",
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@sveltejs/adapter-static": "^1.0.0-next.16",
-    "@sveltejs/kit": "^1.0.0-next.146",
-    "d3-fetch": "^2.0.0",
-    "eslint": "^7.22.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-svelte3": "^3.2.0",
-    "openseadragon": "^2.3.1",
-    "prettier": "~2.2.1",
-    "prettier-plugin-svelte": "^2.2.0",
-    "svelte": "^3.42.1",
-    "vite": "^2.1.0"
+    "@fontsource/fira-mono": "^4.5.0",
+    "@sveltejs/adapter-static": "^1.0.0-next.20",
+    "@sveltejs/kit": "^1.0.0-next.180",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-svelte3": "^3.2.1",
+    "googleapis": "^88.2.0",
+    "openseadragon": "^2.4.2",
+    "prettier": "~2.4.1",
+    "prettier-plugin-svelte": "^2.4.0",
+    "sharp": "^0.29.1",
+    "svelte": "^3.43.1",
+    "vite": "^2.6.5"
   },
   "type": "module",
   "dependencies": {
-    "@fontsource/fira-mono": "^4.2.2",
-    "@lukeed/uuid": "^2.0.0",
-    "cookie": "^0.4.1"
+    "d3-fetch": "^3.0.1",
+    "js-yaml": "^4.1.0"
   }
 }

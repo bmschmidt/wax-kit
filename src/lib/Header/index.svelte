@@ -1,8 +1,7 @@
 <script>
 	import { page } from '$app/stores';
-	import logo from './svelte-logo.svg';
 	import { base, assets } from '$app/paths';
-
+	import config from '$lib/config'
 </script>
 
 <header>
@@ -19,7 +18,9 @@
 		<ul>
 			<li class:active={$page.path === '/'}><a sveltekit:prefetch href={base == '' ? "/" : base }>Home</a></li>
 			<li class:active={$page.path === '/about'}><a sveltekit:prefetch href={base}/about>About</a></li>
-			<li class:active={$page.path === '/nara'}><a sveltekit:prefetch href={base}/nara>NARA collection</a></li>
+			{#each Object.keys(config.collections) as collection}
+			<li class:active={$page.path === "/" + collection}><a sveltekit:prefetch href={base}/{collection}>{collection}</a></li>
+			{/each}
 			<li class:active={$page.path === '/items'}><a sveltekit:prefetch href={base}/items>Item categories</a></li>
 			<li class:active={$page.path === '/table'}><a sveltekit:prefetch href={base}/table>Data Table</a></li>
 		</ul>

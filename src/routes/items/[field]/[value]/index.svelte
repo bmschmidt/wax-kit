@@ -1,12 +1,23 @@
+<script context="module">
+  export async function load({ fetch, page }) {
+    let res = await fetch(`/contents.json`).then(r => r.json());
+    const { field, value } = page.params;
+    if (res) {
+      return { props: { matches: res.filter(d => d[field] === value) } }
+    } else {
+      return {
+        status: 404,
+        error: new Error("SOMETHING WENT WRONG")
+      }
+    }
+  }
+</script>
+
 <script>
-  import {data} from '$lib/OMG_THIS_IS_HACKY_BUT_ITD_BE_A_DATABASE.js';  
-  import ClickableThumb from '../../ClickableThumb.svelte'
+  export let matches;
+  import ClickableThumb from '$lib/components/ClickableThumb.svelte'
   import { page } from "$app/stores";
-  import { base, assets } from '$app/paths';
-  //const assets = ``;
   const { field, value } = $page.params
-  import { onMount } from 'svelte';
-  const matches = data.filter(d => d[field] == value)
 
 </script>
 
@@ -16,18 +27,13 @@
 
 <h1>All items where {field} is {value}</h1>
 
-{#await data}
-
-Waiting for data....
-
-{:then}
 <div class=gallery>
 {#each matches as datum}
-  <ClickableThumb {datum} pid={datum.pid}></ClickableThumb>
+  {#if datum}
+    <ClickableThumb {datum} pid={datum.pid}></ClickableThumb>
+  {/if}
 {/each}
 </div>
-{/await}
-
 
 <style>
   .gallery {

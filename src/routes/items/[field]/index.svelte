@@ -1,5 +1,22 @@
+<script context="module">
+  // see https://kit.svelte.dev/docs#loading
+  export const load = async ({ page, fetch }) => {
+    const res = await fetch('/nara/contents.json');
+    if (res.ok) {
+      const data = await res.json();
+      return {
+        props: { data }
+      };
+    }
+    const { message } = await res.json();
+    return {
+      error: new Error(message)
+    };
+  };
+</script>
+
 <script>
-  import {data} from '$lib/OMG_THIS_IS_HACKY_BUT_ITD_BE_A_DATABASE.js';  
+  export let data;
   import { page } from "$app/stores";
   import { base, assets } from '$app/paths';
   const { field, value } = $page.params
@@ -24,9 +41,9 @@ Waiting for data....
 <div class=gallery>
   <ul>
     {#each [...vals.entries()] as [match, count] }
-        {#if match.length < 80}
-    <li><a href="{base}/items/{encodeURIComponent(field)}/{encodeURIComponent(match)}">{match} ({count})</a></li>
-    {/if}
+        {#if encodeURIComponent(match).length < 80}
+          <li><a href="{base}/items/{encodeURIComponent(field)}/{encodeURIComponent(match)}">{match} ({count})</a></li>
+        {/if}
     {/each}
   </ul>
 </div>

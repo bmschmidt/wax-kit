@@ -8,11 +8,9 @@
 </svelte:head>
 
 <section>
-	<h1>
-				Wax-kit prototype.
-	</h1>
-
-
+<h1>
+	Wax-kit: a Svelte approach.
+</h1>
 <p>
 	This is an idea for a Wax-like website that runs in svelte-kit instead of jekyll. It's still built statically,
 	and because of the nature of Svelte there is little overhead in browser JS.

@@ -1,15 +1,27 @@
+<script context="module">
+  export async function load({ fetch, page }) {
+    let res = await fetch(`/${page.params.collection}/contents.json`).then(r => r.json());
+    if (res) {
+      return { props: { data: res } }
+    } else {
+      return {
+        status: 404,
+        error: new Error("SOMETHING WENT WRONG")
+      }
+    }
+  }
+</script>
+
+
 <script>
-  import {data} from '$lib/OMG_THIS_IS_HACKY_BUT_ITD_BE_A_DATABASE.js';  
-  import ClickableThumb from '../items/ClickableThumb.svelte'
+  export let data;
+  import ClickableThumb from '$lib/components/ClickableThumb.svelte'
   import { page } from "$app/stores";
 
-  import { base, assets } from '$app/paths';
-  //const assets = ``;
-  const { collection, pid } = $page.params
+  const { collection } = $page.params
   let regex = '';
   
   $ : keep = function(datum) {
-    if (datum.collection !== collection) {return false}
     if (regex === '') {
       return true;
     }
@@ -21,7 +33,12 @@
     }
     return false;
   }
-  $ : visible = data.filter( d => keep(d))
+
+  function filter(data) {
+    return data.filter(keep);
+  }
+  const collection_data = Promise.resolve([])
+
 </script>
 
 <svelte:head>
@@ -31,19 +48,13 @@
 <div id="filter" >
   <input bind:value={regex}/>
 </div>
-
-{#await data}
-
-Waiting for data....
-
-{:then}
 <div class=gallery>
-{#each visible as datum }
-  <ClickableThumb {datum} pid={datum.pid}></ClickableThumb>
-{/each}
+  {#each data as datum }
+    {#if datum}
+      <ClickableThumb {datum} pid={datum.pid}></ClickableThumb>
+    {/if}
+  {/each}
 </div>
-{/await}
-
 
 <style>
   .gallery {

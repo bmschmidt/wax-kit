@@ -1,60 +1,67 @@
+<script context="module">
+//  import { base } from "$app/paths";
+  export async function load({ page, fetch,  }) {
+//    let res = await fetch(`/${page.params.collection}/contents.json`);
+//    let contents;
+    const {collection, pid} = page.params;
+    const manifestUrl = `${base}/iiif/presentation/${collection}:${pid}/manifest.json`;
+    const manifest = await fetch(manifestUrl).then(d => d.json());
+    const tileSources = manifest.sequences[0].canvases.map(val => {
+      return val.images[0].resource.service['@id'] + "/info.json"
+    })
+
+    if (manifest) {
+      return { props: { 
+        manifest,
+        tileSources
+      } }
+    } else {
+      return {
+        status: 404,
+        error: new Error("SOMETHING BROKE")
+      }
+    }
+  }
+</script>
+
 <script>
   import { page } from "$app/stores";
-  import { data } from '$lib/OMG_THIS_IS_HACKY_BUT_ITD_BE_A_DATABASE.js';
+  export let tileSources = [];
+  export let manifest;
   import { base, assets } from '$app/paths';
-  //const assets = ``;
-  const { collection, pid } = $page.params
   import { onMount } from 'svelte';
-  const manifestUrl = `${base}/iiif/${pid}/manifest.json`;
-  const item = data.filter(d => d.pid == $page.params.pid)[0] || {label: "Not found"}
-	onMount(async () => {
-    const dragon = import('openseadragon')
-    
-    const remote_root = assets
-    const tiles = fetch(manifestUrl).then(d => d.json())
-    .then(data =>
-      {
-        console.log(data)
-        return data.sequences[0].canvases.map(val => {
-          console.log(val.images[0].resource.service['@id']);
-          return val.images[0].resource.service['@id'] + "/info.json"
-        })
-        }
-      )
-    Promise.all([dragon, tiles]).then(([OpenSeadragon, tileSources]) =>
-    {
-    OpenSeadragon.default({
-        id:                 "osd",
-        prefixUrl: `${assets}/assets/openseadragon/images/`,
-        preserveViewport:   true,
-        visibilityRatio:    1,
-        minZoomLevel:       1,
-        defaultZoomLevel:   1,
-        sequenceMode:       true,
-        tileSources
-    });
-})
-})
+  const { collection, pid } = $page.params
+  const manifestUrl = `${base}/iiif/presentation/${collection}:${pid}/manifest.json`;
 
-
-
+  onMount(() => 
+  { import('openseadragon').then(OpenSeadragon =>
+  OpenSeadragon.default({
+      id:                 "osd",
+      prefixUrl: `${assets}/assets/openseadragon/images/`,
+      preserveViewport:   true,
+      visibilityRatio:    1,
+      minZoomLevel:       1,
+      defaultZoomLevel:   1,
+      sequenceMode:       true,
+      tileSources
+  })
+  )})
 </script>
 
 <h1>
-  {item.label}
+  {manifest.label}
 </h1>
 <div id="osd" class="image-viewer"></div>
 <!--This link is necessary to ensure the manifest is statically generated.-->
 <a href={manifestUrl}>IIIF manifest for this item.</a>
 
 <dl>
-  {#each Object.entries(item) as [k, v]}
-    {#if v}
-      <dt>{k}</dt><dd>{v} 
-        {#if data.filter(d => d[k] == v).length > 1}
-          <a href="../items/{k}/{v}/">({(data.filter(d => d[k] == v)).length - 1} other items.)
-        </a>
-        {/if}
+  {#each manifest.metadata as row}
+    {#if row.value !== undefined && row.value !== ""}
+      <dt>{row.label}</dt><dd>{row.value}
+          {#if (encodeURIComponent(row.label).length < 80) && (encodeURIComponent(row.value).length < 80)}
+            <a href="../items/{encodeURIComponent(row.label)}/{encodeURIComponent(row.value)}/">(See other items.)</a>
+          {/if}
       </dd>
     {/if}
   {/each}
