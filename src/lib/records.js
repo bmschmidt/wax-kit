@@ -1,6 +1,5 @@
 import { csvParse } from 'd3-dsv';
 import config from '$lib/config';
-import { promises as fs } from 'fs';
 import { all_images } from '$lib/image_management'
 
 const cache = {};
@@ -16,25 +15,24 @@ export async function return_dataset(collection_name) {
     return cache[source_csv];
   }
   const full_imagelist = await all_images(collection_name);
+  const fs = await import('fs').then(p => p.promises)
+
   const promise = fs.readFile(source_csv)
   .then( (data) => csvParse('' + data))
   .then(d => 
-    d.map(entry => {
+    d.
+    filter(d => full_imagelist.get(d.pid.toLowerCase()))
+    .map(entry => {
+      entry['pid'] = entry['pid'].toLowerCase(); // Case insensitivity as lowercase.
       entry["wax:collection"] = collection_name;
-      entry["wax:images"] = []
+      entry["wax:images"] = full_imagelist.get(entry['pid'].toLowerCase()).map(d => d['wax:id']);
       const my_str = `${collection_name}:${entry.pid}`
       entry['wax:id'] = my_str
-      for (let imagename of full_imagelist) {
-        if (imagename.toLowerCase().includes(my_str.replace(/[^:]+:/, '').toLowerCase())) {
-          entry["wax:images"].push(collection_name + ":" + imagename);
-        } else {
-
-        }
-      }
       return entry
     }).filter(d => d["wax:images"].length)
-    
-    );
+   
+  )
+  .catch(e => {throw new Error(e)})
   cache[source_csv] = promise;
   return promise
 }
@@ -58,4 +56,5 @@ export function return_all_datasets() {
 
 }
 
+console.log("FOO")
 export const all_data = return_all_datasets()

@@ -1,11 +1,12 @@
-import { root } from '$lib/site_params';
 import config from '$lib/config'
 import { all_data } from '$lib/records';
-const img_cache = {};
-const data_cache = {};
+import { dev } from '$app/env';
+import {image_manifest} from '$lib/iiif/image';
 
+const img_cache = {};
+const root = dev ? "" : config.url 
 const { iiif_root } = config;
-let cached = undefined;
+
 export async function thumbnail(pid) {
   try {
     const man = await manifest(pid);
@@ -16,36 +17,35 @@ export async function thumbnail(pid) {
 }
 
 export async function get_images(id) {
+  console.log("getting", {id})
   if (img_cache[id]) {
-    return img_cache[id];
+    //return img_cache[id];
   }
-  const data = await all_data
+  const data = await all_data.catch(e => {console.error("Couldn't get", id)})
   const image_set = data.filter(d => d['wax:id'] == id)
-
   if (image_set.length == 0) {
-    return Promise.resolve([])
+    return []
   }
   const ids = image_set[0]['wax:images']
   const promises = ids
-    .map(id => `${iiif_root}/${id}/info.json`)
-    .map(d => 
-      fetch(d)
-       .then(r => {
-        return r.json()
-      }));
+    .map(id => image_manifest(id))
+
   const responses = await Promise.all(promises);
-  img_cache[id] = responses;
-  return responses;
+  img_cache[id] = responses.filter(d => d);
+  return img_cache[id]
 }
 
 export async function manifest(id) {
-  const sequences = [await sequence(id)];
+  let sequences = [await sequence(id)];
+  if (sequences[0] == undefined) {
+    sequences = [];    
+  }
   const data = await all_data;
-
   const d = data.filter(d => d['wax:id'] == id)[0]
-  const first_image = (await get_images(id))[0]
+  const all_images = await get_images(id);
+  const first_image = all_images[0]
   if (first_image === undefined) {
-    throw new Error(id + "IS UNDEFINED")
+    throw new Error(id + "IS UNDEFINED: " + JSON.stringify(all_images))
   }
 
   const first_image_id = first_image['@id'];
@@ -54,8 +54,10 @@ export async function manifest(id) {
       "@context": "http://iiif.io/api/presentation/2/context.json",
       "@id": `${iiif_root}/presentation/${id}`,
       "@type": "sc:Manifest",
+      // The metadata is filled directly from the wax metadata.
       "metadata": Object.entries(d).filter(([label, value]) => label && value).map(([label, value]) => ({label: label, value: value})),
-      "label": `${d.label}`, // Controversial. 
+      // The IIIF label is the same as the Wax label.
+      "label": `${d.label}`, 
       "thumbnail": `${root}/thumbnails/${first_image_id}.jpg`,
       "viewingDirection": "left-to-right",
       "viewingHint": "individuals",
@@ -102,11 +104,10 @@ export function img_to_canvas(img) {
 }
 
 export async function sequence(id) {
-
   // Figuring out multi-page items will be trickier.
   const images = await get_images(id);
   if (images.length === 0) {
-    throw new Error("pid " + id + " IS UNDEFINED")
+    throw new Error("pid " + id + " HAS NO IMAGES")
   }
   const first_image = images[0];
   const first_image_id = first_image['@id'];

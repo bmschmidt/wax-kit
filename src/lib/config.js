@@ -1,11 +1,13 @@
 import { load } from 'js-yaml'
 import t from '../../_config.yml?raw'
-
+import { dev } from '$app/env'
 function build_config() {
   const configuration = load(t);
   if (configuration.iiif_root === undefined) {
     configuration.iiif_root = "http://localhost:3000/iiif/image"
+    configuration.base_url = dev ? "http://localhost:3000" : configuration.url
   }
+
   test_config(configuration)
   return configuration 
 }

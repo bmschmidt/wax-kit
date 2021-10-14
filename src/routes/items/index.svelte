@@ -30,8 +30,8 @@ Waiting for data....
 <div class=gallery>
   <ul>
     {#each fields as field}
-    {#if field.length < 80}
-    <li><a href={base}/items/{field}>{field}</a></li>
+    {#if field.length < 80 && field !== 'pid'}
+      <li><a href={base}/items/{field}>{field}</a></li>
     {/if}
     {/each}
   </ul>

@@ -1,50 +1,43 @@
 <script context="module">
-//  import { base } from "$app/paths";
-  export async function load({ page, fetch,  }) {
-//    let res = await fetch(`/${page.params.collection}/contents.json`);
-//    let contents;
+  export async function load({ page }) {
+    const manifest_maker = await import('$lib/iiif/presentation.js').then(d => d.manifest)
     const {collection, pid} = page.params;
-    const manifestUrl = `${base}/iiif/presentation/${collection}:${pid}/manifest.json`;
-    const manifest = await fetch(manifestUrl).then(d => d.json());
+    const manifest = await manifest_maker(`${collection}:${pid}`)
     const tileSources = manifest.sequences[0].canvases.map(val => {
       return val.images[0].resource.service['@id'] + "/info.json"
     })
-
-    if (manifest) {
-      return { props: { 
-        manifest,
-        tileSources
-      } }
-    } else {
-      return {
-        status: 404,
-        error: new Error("SOMETHING BROKE")
-      }
+    return { props: { 
+      manifest : JSON.parse(JSON.stringify(manifest)),
+      tileSources : JSON.parse(JSON.stringify(tileSources))
+    }
     }
   }
 </script>
 
 <script>
-  import { page } from "$app/stores";
   export let tileSources = [];
   export let manifest;
-  import { base, assets } from '$app/paths';
+  import { page } from "$app/stores";
+  import config from '$lib/config'
+  import { assets } from '$app/paths';
   import { onMount } from 'svelte';
   const { collection, pid } = $page.params
-  const manifestUrl = `${base}/iiif/presentation/${collection}:${pid}/manifest.json`;
+  const { base_url } = config;
+
+  const manifestUrl = `${base_url}/iiif/presentation/${collection}:${pid}/manifest.json`;
 
   onMount(() => 
-  { import('openseadragon').then(OpenSeadragon =>
-  OpenSeadragon.default({
-      id:                 "osd",
-      prefixUrl: `${assets}/assets/openseadragon/images/`,
-      preserveViewport:   true,
-      visibilityRatio:    1,
-      minZoomLevel:       1,
-      defaultZoomLevel:   1,
-      sequenceMode:       true,
-      tileSources
-  })
+    { import('openseadragon').then(OpenSeadragon =>
+    OpenSeadragon.default({
+        id:                 "osd",
+        prefixUrl: `${assets}/assets/openseadragon/images/`,
+        preserveViewport:   true,
+        visibilityRatio:    1,
+        minZoomLevel:       1,
+        defaultZoomLevel:   1,
+        sequenceMode:       true,
+        tileSources:        tileSources,
+    })
   )})
 </script>
 
@@ -59,9 +52,7 @@
   {#each manifest.metadata as row}
     {#if row.value !== undefined && row.value !== ""}
       <dt>{row.label}</dt><dd>{row.value}
-          {#if (encodeURIComponent(row.label).length < 80) && (encodeURIComponent(row.value).length < 80)}
-            <a href="../items/{encodeURIComponent(row.label)}/{encodeURIComponent(row.value)}/">(See other items.)</a>
-          {/if}
+    
       </dd>
     {/if}
   {/each}
@@ -75,11 +66,6 @@
     width:100%;
     height:550px;
     max-height:80vh
-  }
-
-  .openseadragon-container {
-    width: 100%;
-    height: 100%;
   }
 
   dl {

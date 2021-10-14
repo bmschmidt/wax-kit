@@ -1,4 +1,3 @@
-import { promises as fs } from 'fs'
 import config from '$lib/config'
 
 const original_formats = [
@@ -9,67 +8,80 @@ const original_formats = [
   "tif"
 ]
 
-async function all_dir_images(dir, prefix = "") {
+function drop_suffix(string) {
+  return string.replace(/\.[^.]+$/, "")
+}
+
+const img_cache = new Map()
+
+export async function all_images(collection_name) {
+  if (img_cache.get(collection_name)) {
+    return img_cache.get(collection_name)
+  }
+  const imgdir = `_data/` + 
+    config.collections[collection_name].images.source;
+
   // This function was mostly written by Copilot.
-  const files = await fs.readdir(dir)
-  const images = []
+  
+  const files = await fs.readdir(imgdir)
+
+  const images = new Map()
   for (let file of files) {
-    const location = `${dir}/${file}`
+    const location = `${imgdir}/${file}`
     const stats = await fs.stat(location)
     if (stats.isDirectory()) {
-      let sub_images = await all_dir_images(location, 
-        `${file}_`)
-//      sub_images = sub_images.map(d => `${prefix}${d}`)
-      images.push(...sub_images)
+      const pid = file;
+      const matches = [];
+      const subfiles = await fs.readdir(location)
+      for (let subfile of subfiles) {
+        if (!original_formats.includes(subfile.split('.').pop())) {
+          continue
+        }
+        matches.push({
+          original_location: location + "/" + subfile,
+          pid: pid,
+          'wax:id': collection_name + ":" + pid + "_" + drop_suffix(subfile)
+        })
+      }
+      images.set(pid, matches)
     } else {
       if (original_formats.includes(file.split('.').pop())) {
-        const front = file.split('.')
-        front.pop()
-        const name = front.join('.')
-        images.push(prefix + name)
+        const pid = drop_suffix(file)
+        images.set(pid, [
+          {
+            original_location: location,
+            pid: pid,
+            'wax:id': collection_name + ":" + pid
+          }
+        ])
       }
     }
   }
+  img_cache.set(collection_name, images)
   return images
 }
 
-export async function all_images(collection) {
-  const imgdir = `_data/` + config.collections[collection].images.source;
-  const images = await all_dir_images(imgdir)
-  return images;
-}
-
-export async function associated_images(collection, pid) {
-  // returns all associated files for a given pid within a collection
-  const imgdir = `_data/` + config.collections[collection].images.source;
-  const base = imgdir + "/" + pid
-  if (await fs.file_exists(imgdir + "/" + pid)) {
-    const files = await fs.readdir(base)
-    files.map(fname => {
-      return base + "/" + fname
-    })
+export async function disk_image_locations(collection, pid) {
+  const images = await all_images(collection)
+  const image = images.get(pid)
+  if (!image) {
+    return []
   }
-//  await fs.stat(imgdir / ).isDirectory()
+  return image.map(img => img.original_location)
 }
 
-export async function original_location(collection, pid) {
-  const imgdir = `_data/` + 
-  config.collections[collection].images.source;
-  for (let format of original_formats) {
-    const location = imgdir + "/" + pid + '.' + format;
-    if (await file_exists(location)) {
-      return Promise.resolve(location)
-    }
-    const location2 = location.replace(/_([^_]*)$/, '/$1')
-    if (await file_exists(location2)) {      
-      return Promise.resolve(location2)
+export async function disk_image_location(collection, id) {
+  console.log("disk image", {collection, id})
+  const images = await all_images(collection)
+  for (let [k, v] of images.entries()) {
+    for (let image of v) {
+      if (image['wax:id']) {
+        if (image['wax:id'] == collection + ":" + id) {
+          console.log("found", {image})
+          return image.original_location
+        }
+      }
     }
   }
-  throw new Error("File not Found")
-}
-
-async function file_exists(location) {
-  return fs.access(location)
-           .then(() => true)
-           .catch(() => false)
+  return null
 }
