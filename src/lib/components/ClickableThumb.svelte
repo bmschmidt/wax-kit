@@ -27,10 +27,10 @@
 <style>
 
 .thumb {
-  max-width: 10vw;
-  min-width: 10vw;
-  min-height: 10vw;
-  max-height: 10vw;
+  max-width: 17vw;
+  min-width: 17vw;
+  min-height: 17vw;
+  max-height: 17vw;
   margin: 2px 2px 2px 2px;
   font-size: 10px;
 }

@@ -1,9 +1,11 @@
+console.log("WHOOO")
 import sharp from 'sharp';
 import fs from 'fs';
 import config from '$lib/config';
 
 const { iiif_root } = config;
 export default async function tile_image(local_path, id) {
+  console.log("TILING", id)
   // Creates IIIF tiles of an image using the 'sharp' library.
 
 

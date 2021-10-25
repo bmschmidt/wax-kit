@@ -1,6 +1,5 @@
-import config from '$lib/config'
-import { all_data } from '$lib/records';
-import { dev } from '$app/env';
+import config, { data } from '$lib/config'
+import { dev, browser } from '$app/env';
 import {image_manifest} from '$lib/iiif/image';
 
 const img_cache = {};
@@ -17,11 +16,15 @@ export async function thumbnail(pid) {
 }
 
 export async function get_images(id) {
+  if (browser) {
+    const e = new Error("This isn't browser code.")
+    console.error(e.stack)
+    throw e
+  }
   console.log("getting", {id})
   if (img_cache[id]) {
     //return img_cache[id];
   }
-  const data = await all_data.catch(e => {console.error("Couldn't get", id)})
   const image_set = data.filter(d => d['wax:id'] == id)
   if (image_set.length == 0) {
     return []
@@ -40,7 +43,6 @@ export async function manifest(id) {
   if (sequences[0] == undefined) {
     sequences = [];    
   }
-  const data = await all_data;
   const d = data.filter(d => d['wax:id'] == id)[0]
   const all_images = await get_images(id);
   const first_image = all_images[0]

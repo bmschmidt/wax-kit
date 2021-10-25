@@ -1,22 +1,7 @@
-<script context="module">
-  // see https://kit.svelte.dev/docs#loading
-  export const load = async ({ fetch }) => {
-          const res = await fetch('/nara/contents.json');
-          if (res.ok) {
-                  const data = await res.json();
-                  return {
-                          props: { data }
-                  };
-          }
-          const { message } = await res.json();
-          return {
-                  error: new Error(message)
-          };
-  };
-</script>
+
 
 <script>
-  export let data; // from load in module context.
+  import { data } from '$lib/config'
   const vals = new Map()
   const keys = Object.keys(data[0])
 </script>

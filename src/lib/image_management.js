@@ -22,11 +22,12 @@ export async function all_images(collection_name) {
     config.collections[collection_name].images.source;
 
   // This function was mostly written by Copilot.
-  
+  const fs = await import('fs').then(d => d.promises)
   const files = await fs.readdir(imgdir)
 
   const images = new Map()
   for (let file of files) {
+    console.log({file})
     const location = `${imgdir}/${file}`
     const stats = await fs.stat(location)
     if (stats.isDirectory()) {
@@ -34,7 +35,7 @@ export async function all_images(collection_name) {
       const matches = [];
       const subfiles = await fs.readdir(location)
       for (let subfile of subfiles) {
-        if (!original_formats.includes(subfile.split('.').pop())) {
+        if (!original_formats.includes(subfile.split('.').pop().toLowerCase())) {
           continue
         }
         matches.push({
@@ -46,7 +47,7 @@ export async function all_images(collection_name) {
       images.set(pid, matches)
     } else {
       if (original_formats.includes(file.split('.').pop())) {
-        const pid = drop_suffix(file)
+        const pid = drop_suffix(file).toLowerCase()
         images.set(pid, [
           {
             original_location: location,
@@ -62,6 +63,7 @@ export async function all_images(collection_name) {
 }
 
 export async function disk_image_locations(collection, pid) {
+  // Return the locations of all images associated with a pid based on the on-disk file hierarchy.
   const images = await all_images(collection)
   const image = images.get(pid)
   if (!image) {
@@ -71,7 +73,7 @@ export async function disk_image_locations(collection, pid) {
 }
 
 export async function disk_image_location(collection, id) {
-  console.log("disk image", {collection, id})
+  // Return the single location for an 
   const images = await all_images(collection)
   for (let [k, v] of images.entries()) {
     for (let image of v) {

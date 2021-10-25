@@ -1,20 +1,8 @@
-<script context="module">
-  export async function load({ fetch, page }) {
-    let res = await fetch(`/${page.params.collection}/contents.json`).then(r => r.json());
-    if (res) {
-      return { props: { data: res } }
-    } else {
-      return {
-        status: 404,
-        error: new Error("SOMETHING WENT WRONG")
-      }
-    }
-  }
-</script>
+
 
 
 <script>
-  export let data;
+  import { data } from '$lib/config';
   import ClickableThumb from '$lib/components/ClickableThumb.svelte'
   import { page } from "$app/stores";
 

@@ -10,7 +10,7 @@
 </main>
 
 <footer>
-	A wax-kit project.
+	Built with wax-kit.
 </footer>
 
 <style>

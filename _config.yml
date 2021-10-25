@@ -7,22 +7,13 @@
 # syntax errors in this file:
 # ~> https://learnxinyminutes.com/docs/yaml/
 #
-#
-# Questions ?
-# ~> https://minicomp.github.io/wiki/#/
-# ~> https://gitter.im/minicomp/wax/
-#
-# ---------------------------------------------------------------
-# MAIN SETTINGS
-# ---------------------------------------------------------------
-# Feel free to change these! For more info, refer to:
-# ~> https://jekyllrb.com/docs/configuration/options/
+# Wax-Kit uses Jekyll-style configuraton files.
 
-title:            'A-Files'
-description:      'Immigration history'
-url:              'https://bmschmidt.github.io'
+title:            'Historic Databases'
+description:      'A set of paper databases'
+url:              'https://bmschmidt.github.io/'
 baseurl:          '/'
-copyright:        'copyright RBZ Willits 2020'
+copyright:        'copyright Ben Schmidt 2021'
 logo:             '/assets/logo.png'
 
 # ---------------------------------------------------------------
@@ -65,17 +56,17 @@ minify_html: false
 collections:
   exhibits:
     output: true
-  nara: # name of collection
+  19C: # name of collection
     output: true # makes sure pages are output as html files
     layout: 'generic_collection_item' # the layout for the pages to use
     metadata:
-      source: 'nara.csv' # path to the metadata file within `_data`
+      source: 'bigdata1.csv' # path to the metadata file within `_data`
       # The thing after the slash is the individual sheet.
-      google_drive_id: '1s_SQ-Cuw4iMfWQuGJ__rxYZfxoS3JSvJqSC_0vfRJ2s/A_Files'
+      google_drive_id: '1dAIKPxhCmqgz3r9h21_muJolEVGzRYIN7Syg1_js6qI'
     images:
-      source: 'raw_images/a_files' # path to the directory of images within `_data`
+      source: 'raw_images/images' # path to the directory of images within `_data`
       google_drive_ids:
-        - 1um0YC8XApGa-0j1jYlI0gMUK0D8Hn65L
+        - '1xG-qqCFYGT6plpnGOKYL_qR_blf_Ctry'
 # --------------------------------------------------------------
 # SEARCH INDEX SETTINGS
 # --------------------------------------------------------------
@@ -113,7 +104,7 @@ menu:
     sub:
       - label: "Ben's Story"
         link: '/exhibits/ben/'
-        google_drive_id: 1-BTA9-vWWMgH33KhtDFqxugxLbRrp-lTmp5d1zD5SHg
+#        google_drive_id: 1-BTA9-vWWMgH33KhtDFqxugxLbRrp-lTmp5d1zD5SHg
   - label: 'Browse'
     link: '/collection/'
   - label: 'Search'

@@ -1,16 +1,15 @@
 import sharp from 'sharp';
-import { disk_image_locations, disk_image_location } from '$lib/image_management';
+import { disk_image_locations } from '$lib/image_management';
 
 
 export async function get({ params }) {
   const {id} = params;
+  console.log({id})
   const [collection, ...rest] = id.split(':');
   const pid = rest.join(':');
   if (pid === '') {
     throw new Error('Invalid IIIF Image ID: Must contain a colon to indicate the collection');
   }
-  const loc = await disk_image_locations(collection, pid);
-  console.log({loc})
   return disk_image_locations(collection, pid)
     .then(img_locs =>
       sharp(img_locs[0])

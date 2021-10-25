@@ -1,16 +1,7 @@
 
-<script context="module">
-  // see https://kit.svelte.dev/docs#loading
-  export const load = async ({ fetch, page }) => {
-    const data = await fetch('/contents.json').then(d => d.json())
-    return {
-      props: { data }
-    };
-  }
-</script>
 
 <script>
-  export let data // populates from the module context.
+  import { data } from '$lib/config';
   import { base } from '$app/paths';
   const vals = new Map()
   const fields = Object.keys(data[0])

@@ -1,6 +1,8 @@
 import { csvParse } from 'd3-dsv';
-import config from '$lib/config';
-import { all_images } from '$lib/image_management'
+import config from './config.js';
+import { all_images } from './image_management.js'
+import { promises as fs } from 'fs';
+// This parses all collection CSV files from disk and turns them into a site-wide JSON list of records.
 
 const cache = {};
 
@@ -15,8 +17,7 @@ export async function return_dataset(collection_name) {
     return cache[source_csv];
   }
   const full_imagelist = await all_images(collection_name);
-  const fs = await import('fs').then(p => p.promises)
-
+  console.log({source_csv})
   const promise = fs.readFile(source_csv)
   .then( (data) => csvParse('' + data))
   .then(d => 
@@ -29,22 +30,22 @@ export async function return_dataset(collection_name) {
       const my_str = `${collection_name}:${entry.pid}`
       entry['wax:id'] = my_str
       return entry
-    }).filter(d => d["wax:images"].length)
-   
+    })
+//    .filter(d => d["wax:images"].length || console.log(d['wax:images']))
   )
   .catch(e => {throw new Error(e)})
   cache[source_csv] = promise;
   return promise
 }
 
-export function return_all_datasets() {
+export async function reparse_all_datasets() {
   const promises = [];
 
   for (const collection_name in config.collections) {
     promises.push(return_dataset(collection_name));
   }
 
-  return Promise.all(promises)
+  const all_data = await Promise.all(promises)
   .then(sets => {
     const all = [];
     for (const set of sets) {
@@ -54,7 +55,7 @@ export function return_all_datasets() {
   })
   .catch(err => {console.warn(err)})
 
+  const jsonified = JSON.stringify(all_data, null, 2);
+  await fs.writeFile('_all_data.json', jsonified)
+  return all_data
 }
-
-console.log("FOO")
-export const all_data = return_all_datasets()

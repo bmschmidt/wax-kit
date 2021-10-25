@@ -1,7 +1,8 @@
 <script>
 	import { page } from '$app/stores';
-	import { base, assets } from '$app/paths';
-	import config from '$lib/config'
+	import { base } from '$app/paths';
+	import config from '$lib/config';
+
 </script>
 
 <header>
@@ -23,6 +24,9 @@
 			{/each}
 			<li class:active={$page.path === '/items'}><a sveltekit:prefetch href={base}/items>Item categories</a></li>
 			<li class:active={$page.path === '/table'}><a sveltekit:prefetch href={base}/table>Data Table</a></li>
+			<li>
+				<a href="#" on:click={() => fetch(`${base}/sync.json`)}>Sync</a>
+			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z"/>

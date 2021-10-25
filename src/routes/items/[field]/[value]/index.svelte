@@ -1,24 +1,9 @@
-<script context="module">
-  export async function load({ fetch, page }) {
-    let res = await fetch(`/contents.json`).then(r => r.json());
-    const { field, value } = page.params;
-    if (res) {
-      return { props: { matches: res.filter(d => d[field] === value) } }
-    } else {
-      return {
-        status: 404,
-        error: new Error("SOMETHING WENT WRONG")
-      }
-    }
-  }
-</script>
-
 <script>
-  export let matches;
+  import { data } from '$lib/config';
   import ClickableThumb from '$lib/components/ClickableThumb.svelte'
   import { page } from "$app/stores";
   const { field, value } = $page.params
-
+  const matches = data.filter(d => d[field] === value)
 </script>
 
 <svelte:head>

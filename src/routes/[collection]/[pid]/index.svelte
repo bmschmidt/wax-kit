@@ -1,8 +1,9 @@
 <script context="module">
-  export async function load({ page }) {
-    const manifest_maker = await import('$lib/iiif/presentation.js').then(d => d.manifest)
+  export async function load({ page, fetch }) {
+    // const manifest_maker = await import('$lib/iiif/presentation.js').then(d => d.manifest)
     const {collection, pid} = page.params;
-    const manifest = await manifest_maker(`${collection}:${pid}`)
+    const host = `../../..`; //`http://localhost:3000`
+    const manifest = await fetch(`${host}/iiif/presentation/${collection}:${pid}/manifest.json`).then(d => d.json())
     const tileSources = manifest.sequences[0].canvases.map(val => {
       return val.images[0].resource.service['@id'] + "/info.json"
     })
@@ -17,6 +18,7 @@
 <script>
   export let tileSources = [];
   export let manifest;
+  console.log({manifest})
   import { page } from "$app/stores";
   import config from '$lib/config'
   import { assets } from '$app/paths';
