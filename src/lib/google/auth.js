@@ -19,7 +19,6 @@ const TOKEN_PATH = 'token.json';
  */
 
 export default function run_with_auth(func,  ...args) {
-  console.log({args})
   // func: a function that starts a single argument, auth.
   return new Promise((resolve, reject) =>
     fs.promises.readFile('credentials.json')

@@ -1,13 +1,14 @@
 import tile_image from '$lib/iiif/tiler'
 import { disk_image_location } from '$lib/image_management'
-import { browser, prerendering } from '$app/env';
+// import { browser, prerendering } from '$app/env';
 import config from '$lib/config'
 
+
 export async function image_manifest(id) {
-  console.log({prerendering, browser, "hi" : "foo"})
+/*  console.log({browser, "hi" : "foo"})
   if (browser) {
     return fetch(`${config.iiif_root}/${id}`).then(res => res.json())
-  }
+  } */
   const fs = await import('fs').then(p => p.promises)
 
   // The collection is prefixes the pid with the collection.
@@ -20,13 +21,15 @@ export async function image_manifest(id) {
   }
 
   const info_file_location = `img/derivatives/iiif/images/${id}/info.json`
-  return fs.readFile(info_file_location)
+  const manifest = await fs.readFile(info_file_location)
     .catch((err) => 
       disk_image_location(collection, partial_id)
       .then(location => tile_image(location, id))
       .then(() => fs.readFile(info_file_location))
     )
     .then(d => JSON.parse(d))
-
-
+  // We're going to regenerate the http portion of the id depending
+  // on whether we're in dev or build mode.
+  manifest['@id'] = `${config.iiif_root}/${id}`;
+  return manifest;
 }

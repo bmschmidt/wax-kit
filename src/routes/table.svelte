@@ -1,9 +1,6 @@
-
-
 <script>
-  import { data } from '$lib/config'
-  const vals = new Map()
-  const keys = Object.keys(data[0])
+  import { data } from '$lib/data'
+  const keys = Object.keys($data[0])
 </script>
 
 <svelte:head>
@@ -11,12 +8,6 @@
 </svelte:head>
 
 <h1>Data table</h1>
-
-{#await data}
-
-Waiting for data....
-
-{:then}
 <div class=table>
 <table>
   <tr>
@@ -24,7 +15,7 @@ Waiting for data....
       <th>{key}</th>
     {/each}
   </tr>
-  {#each data as datum}
+  {#each $data as datum}
   <tr>
     {#each keys as key}
       <td>{datum[key]}</td>
@@ -32,7 +23,5 @@ Waiting for data....
   </tr>
   {/each}
 </table>
+</div>
 
-  </div>
-
-{/await}

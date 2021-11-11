@@ -17,7 +17,6 @@ export async function return_dataset(collection_name) {
     return cache[source_csv];
   }
   const full_imagelist = await all_images(collection_name);
-  console.log({source_csv})
   const promise = fs.readFile(source_csv)
   .then( (data) => csvParse('' + data))
   .then(d => 

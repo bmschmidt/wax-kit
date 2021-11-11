@@ -1,27 +1,11 @@
-<script context="module">
-  // see https://kit.svelte.dev/docs#loading
-  export const load = async ({ page, fetch }) => {
-    const res = await fetch('/nara/contents.json');
-    if (res.ok) {
-      const data = await res.json();
-      return {
-        props: { data }
-      };
-    }
-    const { message } = await res.json();
-    return {
-      error: new Error(message)
-    };
-  };
-</script>
 
 <script>
-  export let data;
+  import { data } from '$lib/data'
   import { page } from "$app/stores";
   import { base, assets } from '$app/paths';
   const { field, value } = $page.params
   const vals = new Map()
-  data.filter(d => d[field] !== undefined && d[field] !== "").forEach(d => {
+  $data.filter(d => d[field] !== undefined && d[field] !== "").forEach(d => {
     const ffield = d[field]
     vals.set(ffield, (vals.get(ffield) ? vals.get(ffield) : 0) + 1)
   })
@@ -33,11 +17,6 @@
 
 <h1>All items by {field}</h1>
 
-{#await data}
-
-Waiting for data....
-
-{:then}
 <div class=gallery>
   <ul>
     {#each [...vals.entries()] as [match, count] }
@@ -47,8 +26,6 @@ Waiting for data....
     {/each}
   </ul>
 </div>
-{/await}
-
 
 <style>
   .gallery {

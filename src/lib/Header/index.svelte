@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { base } from '$app/paths';
 	import config from '$lib/config';
+  import { data } from '$lib/data'
 
 </script>
 
@@ -25,7 +26,7 @@
 			<li class:active={$page.path === '/items'}><a sveltekit:prefetch href={base}/items>Item categories</a></li>
 			<li class:active={$page.path === '/table'}><a sveltekit:prefetch href={base}/table>Data Table</a></li>
 			<li>
-				<a href="#" on:click={() => fetch(`${base}/sync.json`)}>Sync</a>
+				<span on:click={() => fetch(`${base}/sync.json`).then(d => d.json()).then(d => $data = data)}>Sync</span>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
@@ -33,9 +34,6 @@
 		</svg>
 	</nav>
 
-	<div class="corner">
-		<!-- TODO put something else here? github link? -->
-	</div>
 </header>
 
 <style>
@@ -117,7 +115,22 @@
 		transition: color 0.2s linear;
 	}
 
+	nav span {
+		display: flex;
+		height: 100%;
+		align-items: center;
+		padding: 0 1em;
+		color: var(--heading-color);
+		font-weight: 700;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 10%;
+		text-decoration: none;
+		transition: color 0.2s linear;
+	}
+
 	a:hover {
 		color: var(--accent-color);
 	}
+  
 </style>

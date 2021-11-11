@@ -3,8 +3,10 @@
     // const manifest_maker = await import('$lib/iiif/presentation.js').then(d => d.manifest)
     const {collection, pid} = page.params;
     const host = `../../..`; //`http://localhost:3000`
-    const manifest = await fetch(`${host}/iiif/presentation/${collection}:${pid}/manifest.json`).then(d => d.json())
+    const manifest = await fetch(`${host}/iiif/presentation/${collection}:${pid}/manifest.json`)
+       .then(d => d.json())
     const tileSources = manifest.sequences[0].canvases.map(val => {
+      console.log(val)
       return val.images[0].resource.service['@id'] + "/info.json"
     })
     return { props: { 
@@ -18,7 +20,6 @@
 <script>
   export let tileSources = [];
   export let manifest;
-  console.log({manifest})
   import { page } from "$app/stores";
   import config from '$lib/config'
   import { assets } from '$app/paths';
@@ -26,7 +27,15 @@
   const { collection, pid } = $page.params
   const { base_url } = config;
 
-  const manifestUrl = `${base_url}/iiif/presentation/${collection}:${pid}/manifest.json`;
+  const manifestUrl = `${base_url}iiif/presentation/${collection}:${pid}/manifest.json`;
+
+
+  function include_field(k) {
+    if (k.startsWith("wax:")) {return false}
+    if (k.startsWith("Student ")) {return false}
+    return true
+  }
+
 
   onMount(() => 
     { import('openseadragon').then(OpenSeadragon =>
@@ -52,7 +61,7 @@
 
 <dl>
   {#each manifest.metadata as row}
-    {#if row.value !== undefined && row.value !== ""}
+    {#if row.value !== undefined && row.value !== "" && include_field(row.label)}
       <dt>{row.label}</dt><dd>{row.value}
     
       </dd>
@@ -67,7 +76,6 @@
     min-height:480px;
     width:100%;
     height:550px;
-    max-height:80vh
   }
 
   dl {

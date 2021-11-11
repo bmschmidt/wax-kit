@@ -1,5 +1,4 @@
 import {image_manifest} from '$lib/iiif/image';
-
 // returns the IIIF manifest
 
 export async function get({ params }) {

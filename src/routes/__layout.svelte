@@ -1,6 +1,22 @@
+<script context="module">
+	export async function load({fetch}) {
+		const data = await fetch('/data.json').then(d => d.json());
+		return {
+			props: {
+					dataset : data
+				}
+			}
+	}
+
+</script>
+
 <script>
 	import Header from '$lib/Header/index.svelte';
 	import '../app.css';
+  export let dataset;
+	// Use the on-disk data.json on every page.
+	import { data } from '$lib/data';
+  $data = dataset;
 </script>
 
 <Header />
@@ -10,7 +26,7 @@
 </main>
 
 <footer>
-	Built with wax-kit.
+	Waxy site.
 </footer>
 
 <style>

@@ -27,7 +27,6 @@ export async function all_images(collection_name) {
 
   const images = new Map()
   for (let file of files) {
-    console.log({file})
     const location = `${imgdir}/${file}`
     const stats = await fs.stat(location)
     if (stats.isDirectory()) {
@@ -79,7 +78,6 @@ export async function disk_image_location(collection, id) {
     for (let image of v) {
       if (image['wax:id']) {
         if (image['wax:id'] == collection + ":" + id) {
-          console.log("found", {image})
           return image.original_location
         }
       }

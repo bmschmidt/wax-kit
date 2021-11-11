@@ -1,9 +1,9 @@
 <script>
-  import { data } from '$lib/config';
+  import { data } from '$lib/data';
   import ClickableThumb from '$lib/components/ClickableThumb.svelte'
   import { page } from "$app/stores";
   const { field, value } = $page.params
-  const matches = data.filter(d => d[field] === value)
+  const matches = $data.filter(d => d[field] === value)
 </script>
 
 <svelte:head>
@@ -13,9 +13,9 @@
 <h1>All items where {field} is {value}</h1>
 
 <div class=gallery>
-{#each matches as datum}
-  {#if datum}
-    <ClickableThumb {datum} pid={datum.pid}></ClickableThumb>
+{#each matches as record}
+  {#if record}
+    <ClickableThumb {record}></ClickableThumb>
   {/if}
 {/each}
 </div>

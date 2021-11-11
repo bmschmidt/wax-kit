@@ -1,26 +1,24 @@
-<script context="module">
-  
-</script>
 
 <script>
-  export let datum;
-  export let pid;
-  import { base } from '$app/paths';
-  const collection = datum['wax:collection']
-  const url = `/thumbnails/${collection}:${datum.pid}.jpg`;
+  export let record;
+  const waxid = record['wax:id']
+  import config from '$lib/config';
+  const { base_url } = config;
+  const collection = record['wax:collection']
+  const thumbnail = `${base_url}thumbnails/${waxid}.jpg`;
 </script>
 
-{#if datum && pid}
-  <div class="thumb" id={pid}>
-    <a href="{base}/{datum['wax:collection']}/{pid}/">
+{#if record && waxid}
+  <div class="thumb" id={waxid}>
+    <a sveltekit:prefetch href="{base_url}{record['wax:collection']}/{record.pid}/">
       <figure>
-        <img src="{url}" loading="lazy" alt="Improve alt-text: {datum.label}" style="width:100%" />
-        <figcaption>{datum.label}</figcaption>
+        <img src="{thumbnail}" loading="lazy" alt="Improve alt-text: {record.label}" style="width:100%" />
+        <figcaption>{record.label}</figcaption>
       </figure>
     </a>
   </div>
   {:else}
-    Could not find an id for {pid};
+    Could not find an id for {waxid};
   {/if}
 
 

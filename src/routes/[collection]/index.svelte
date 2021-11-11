@@ -1,8 +1,5 @@
-
-
-
 <script>
-  import { data } from '$lib/config';
+  import { data } from '$lib/data';
   import ClickableThumb from '$lib/components/ClickableThumb.svelte'
   import { page } from "$app/stores";
 
@@ -22,11 +19,6 @@
     return false;
   }
 
-  function filter(data) {
-    return data.filter(keep);
-  }
-  const collection_data = Promise.resolve([])
-
 </script>
 
 <svelte:head>
@@ -37,9 +29,9 @@
   <input bind:value={regex}/>
 </div>
 <div class=gallery>
-  {#each data as datum }
-    {#if datum}
-      <ClickableThumb {datum} pid={datum.pid}></ClickableThumb>
+  {#each $data as record }
+    {#if record}
+      <ClickableThumb {record}></ClickableThumb>
     {/if}
   {/each}
 </div>

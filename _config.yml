@@ -11,7 +11,7 @@
 
 title:            'Historic Databases'
 description:      'A set of paper databases'
-url:              'https://bmschmidt.github.io/'
+url:              'https://paperdata.benschmidt.org/'
 baseurl:          '/'
 copyright:        'copyright Ben Schmidt 2021'
 logo:             '/assets/logo.png'
@@ -102,9 +102,15 @@ menu:
         link: '/credits/'
   - label: 'Exhibits'
     sub:
-      - label: "Ben's Story"
+      - label: "Example Exhibit"
         link: '/exhibits/ben/'
-#        google_drive_id: 1-BTA9-vWWMgH33KhtDFqxugxLbRrp-lTmp5d1zD5SHg
+        google_drive_id: 1FTt5zCVWuX3Pmm_nnRgijv-N3AGqZa_vMwwMIzgG72Y
+      - label: "Lomax"
+        link: '/exhibits/lomax'
+        google_drive_id: 1IH8I6B5Yi0JBpA7q5vjMhnCFUmisYWV3h12o_bF03kA
+      - label: "YMCA Punch Cards"
+        link: '/exhibits/ymca'
+        google_drive_id: 1NDRm_qLqAFONg0moVl8V3SPB-X4WcF9kzIwXUdh-Kr4
   - label: 'Browse'
     link: '/collection/'
   - label: 'Search'

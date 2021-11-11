@@ -1,29 +1,38 @@
 import { load } from 'js-yaml'
 import t from '../../_config.yml?raw'
-
 import { dev } from '$app/env'
 
-import _all_data from '../../_all_data.json?raw'
+/* NOTE  THIS WILL ONLY WORK IF THE PORT IS 3000 */
 
-//console.log({_all_data})
-export const data = JSON.parse(_all_data)
-
-console.log(data[3])
 function build_config() {
+
   const configuration = load(t);
 
   if (configuration.iiif_root === undefined) {
-    configuration.iiif_root = dev ? "http://localhost:3000/iiif/image" : configuration.url + "/iiif/image"
+    configuration.iiif_root = dev ? 
+      "http://localhost:3000/iiif/image" :
+       configuration.url + "/iiif/image"
   }
 
   {
-    configuration.base_url = dev ? "http://localhost:3000/" : configuration.url
+    configuration.base_url = dev ?
+      "http://localhost:3000/" : 
+      configuration.url
   }
 
   test_config(configuration)
   return configuration 
 }
 
+export function get_exhibit_pages(configuration) {
+  const { menu } = configuration
+  let exhibits = menu.filter(d => d.label == 'Exhibits')
+  if (!exhibits.length) {return}
+  exhibits = exhibits[0]
+  if (!exhibits || !exhibits.sub) {return []}
+  console.log(exhibits.sub)
+  return exhibits.sub
+}
 
 const config = build_config()
 export default config;
