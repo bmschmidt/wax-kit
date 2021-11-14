@@ -1,4 +1,4 @@
-import fs from 'fs'
+import { promises as fs } from 'fs'
 import readline from 'readline'
 import {google} from 'googleapis';
 
@@ -21,10 +21,11 @@ const TOKEN_PATH = 'token.json';
 export default function run_with_auth(func,  ...args) {
   // func: a function that starts a single argument, auth.
   return new Promise((resolve, reject) =>
-    fs.promises.readFile('credentials.json')
+    fs.readFile('credentials.json', {encoding: "utf8"})
       .then(d => JSON.parse(d))
       .then(credentials => 
-        authorize(credentials, (auth) => resolve(func(auth, ...args)))
+        authorize(credentials, 
+          (auth) => resolve(func(auth, ...args)))
       ))    
 }
 
@@ -34,9 +35,10 @@ function authorize(credentials, callback, ...args) {
       client_id, client_secret, redirect_uris[0]);
 
   // Check if we have previously stored a token.
-  fs.readFile(TOKEN_PATH, (err, token) => {
-    if (err) return getNewToken(oAuth2Client, callback);
-    oAuth2Client.setCredentials(JSON.parse(token));
+  fs.readFile(TOKEN_PATH, {encoding: "utf8"})
+  .catch(err => getNewToken(oAuth2Client, callback))
+  .then(token => {
+    oAuth2Client.setCredentials(JSON.parse(token ? token : "{}"));
     callback(oAuth2Client);
   });
 }
@@ -63,7 +65,8 @@ function getNewToken(oAuth2Client, callback) {
       if (err) return console.error('Error retrieving access token', err);
       oAuth2Client.setCredentials(token);
       // Store the token to disk for later program executions
-      fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
+      fs.writeFile(TOKEN_PATH, JSON.stringify(token))
+      .catch((err) => {
         if (err) console.error(err);
         console.log('Token stored to', TOKEN_PATH);
       });

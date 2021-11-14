@@ -1,19 +1,41 @@
 import run_with_auth from '$lib/google/auth'
-import {google} from 'googleapis';
-import { promises as fs, createWriteStream } from 'fs';
+import {drive_v3, google} from 'googleapis';
+import { promises as fs, createWriteStream, PathLike } from 'fs';
 import { reparse_all_datasets } from '$lib/records'
 import sanitize from 'sanitize-html'
 
 // Utilities for downloading directly from Google Drive.
 // Just how often these should be called is kind of a matter of preference.
 
-async function uncached_get(auth, id, mimeType, location) {
+async function download_resource(drive: drive_v3.Resource$Files, id: string, location: PathLike | fs.FileHandle, fout) {
+  console.log("Downloading resource", id, "to", location)
+  return new Promise((resolve, reject) => 
+    drive
+      .get({fileId: id, alt: 'media'}, {responseType: 'stream'})
+      .then(res =>  
+        res.data
+          .on('end', () =>  {
+            console.log("DONE")
+            fout.end(undefined, undefined, 
+              () => resolve(fs.readFile(location)))
+          })
+          .on('error', (err: any) => reject(err))
+          .pipe(fout)
+      )
+  )
+}
+
+async function uncached_get(auth: any, id: any, mimeType: string, location: string) {
   const fout = createWriteStream(location)
-  console.log({location, fout})
-  let full_text = await new Promise((resolve) => {
-    google
+  let drive = google
     .drive({version: 'v3', auth})
     .files
+
+  if (mimeType == 'application/octet-stream') {
+      return await download_resource(drive, id, location, fout)
+  } else {
+    let full_text : string = await new Promise((resolve) => {
+    drive
     .export({
       fileId: id,
       mimeType
@@ -25,7 +47,7 @@ async function uncached_get(auth, id, mimeType, location) {
       response.data.on('end', function() {
         console.log("DONE WRITING")
         fout.end(undefined, undefined, () => 
-          resolve(fs.readFile(location))
+          resolve(fs.readFile(location, {encoding : 'utf-8'}))
         )
       })
       .on('error', function (err) {
@@ -53,8 +75,8 @@ async function uncached_get(auth, id, mimeType, location) {
   }
   return full_text;
 }
-
-async function remote_mod_time(auth, id) {
+}
+async function remote_mod_time(auth: any, id: any) {
   if (id === undefined) throw new Error("No id provided")
   return google
     .drive({version: 'v3', auth})
@@ -63,27 +85,23 @@ async function remote_mod_time(auth, id) {
     .then(d => new Date(d.data.modifiedTime))
 }
 
-export async function cached_get(id, location, return_existing_immediately = true) {
-  console.log({id, location})
-  const mod_remote = run_with_auth(remote_mod_time, id)
+export async function cached_get(id: any, location: PathLike | fs.FileHandle, return_existing_immediately = true, mod_time = undefined): Promise<string | Buffer> {
+  const mod_remote = mod_time ? mod_time : run_with_auth(remote_mod_time, id)
   const mod_local = fs
     .stat(location)
-    .then(d => {
-      return new Date(d.mtime)
-    })
+    .then(d => new Date(d.mtime))
     // if it doesn't exist, we just set the date a long time ago.
   .catch(err => new Date(0))
 
-  return Promise.all([mod_remote, mod_local])
-    .then(([mod_remote, mod_local]) => {
-      console.log({mod_remote, mod_local})
+  const val = Promise.all([mod_remote, mod_local])
+    .then(
+      ([mod_remote, mod_local]) => {
       if (mod_remote < mod_local) {
         console.log("getting local", location)
         return fs.readFile(location)
       } else {
-        let mimeType;
-        console.log("getting remote", location)
-
+        console.log("getting remote", location, mod_remote, mod_local)
+        let mimeType: string;
         if (location.endsWith("md")) {
           mimeType =  'text/html'
         } else if (location.endsWith("html")) {
@@ -93,13 +111,8 @@ export async function cached_get(id, location, return_existing_immediately = tru
         } else {
           mimeType = "application/octet-stream"
         }
-        console.log("Fetching remote", id, location)
-
-        const update_process = run_with_auth(
-          uncached_get, id, mimeType, location
-        ).catch(err => console.log("AAAAAAA", err)|| fs.readFile(location))
-        console.log("HIIII")
-//             .catch(err => console.log(err)|| fs.readFile(location))
+        const update_process = run_with_auth(uncached_get, id, mimeType, location)
+          .catch(err => fs.readFile(location))
         if (mimeType == 'text/csv') {
           return update_process.then(async (f) => {
             await reparse_all_datasets()
@@ -112,5 +125,6 @@ export async function cached_get(id, location, return_existing_immediately = tru
           return update_process; 
         }
       }
-    })
+      })
+  return val
 }

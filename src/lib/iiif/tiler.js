@@ -8,7 +8,6 @@ export default async function tile_image(local_path, id) {
   console.log("TILING", id)
   // Creates IIIF tiles of an image using the 'sharp' library.
 
-
   // Use the same absolute path for derivatives as jekyll/wax.
   const directory = `img/derivatives/iiif/images/${id}`
 

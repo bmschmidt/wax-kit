@@ -13,7 +13,6 @@
 
 <script>
   export let innerHTML
-  console.log(innerHTML)
 </script>
 
 <div class=narrative>

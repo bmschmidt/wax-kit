@@ -102,15 +102,15 @@ menu:
         link: '/credits/'
   - label: 'Exhibits'
     sub:
-      - label: "Example Exhibit"
-        link: '/exhibits/ben/'
-        google_drive_id: 1FTt5zCVWuX3Pmm_nnRgijv-N3AGqZa_vMwwMIzgG72Y
       - label: "Lomax"
         link: '/exhibits/lomax'
         google_drive_id: 1IH8I6B5Yi0JBpA7q5vjMhnCFUmisYWV3h12o_bF03kA
       - label: "YMCA Punch Cards"
         link: '/exhibits/ymca'
         google_drive_id: 1NDRm_qLqAFONg0moVl8V3SPB-X4WcF9kzIwXUdh-Kr4
+      - label: "Baseball Scorecards"
+        link: '/exhibits/baseball'
+        google_drive_id: 1yx2RDiiM_6fB_AXwmb__bnrSnkzfejP9vH82bo8O1xk
   - label: 'Browse'
     link: '/collection/'
   - label: 'Search'

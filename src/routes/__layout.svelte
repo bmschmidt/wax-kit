@@ -11,7 +11,7 @@
 </script>
 
 <script>
-	import Header from '$lib/Header/index.svelte';
+	import Header from '$lib/components/Header/index.svelte';
 	import '../app.css';
   export let dataset;
 	// Use the on-disk data.json on every page.

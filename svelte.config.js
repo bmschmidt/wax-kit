@@ -14,11 +14,12 @@ const config = {
 			base : ''
 		},
 		adapter: adapter({
-			pages: 'docs',
-			assets: 'docs',
-			fallback: null
+//			pages: 'docs',
+//			assets: 'docs',
+//			fallback: null
 		})
 	}
+	
 };
 
 export default config;

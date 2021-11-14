@@ -6,9 +6,11 @@
 <ul>
   
   {#each pages as p}
-  <li>
-    <a sveltekit:prefetch href="{p.link}">{p.label}</a>
-  </li>
+    {#if p}
+    <li>
+      <a sveltekit:prefetch href="{p.link}">{p.label}</a>
+    </li>
+    {/if}
   {/each}
 
 </ul>

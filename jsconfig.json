@@ -5,5 +5,5 @@
 			"$lib/*": ["src/lib/*"]
 		}
 	},
-	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]
+	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte", "src/routes/sync/images.json.ts", "src/lib/google/sync_all.ts", "src/lib/google/export.ts", "src/lib/google/auth.ts", "src/lib/google/list_folder.ts"]
 }

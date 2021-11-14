@@ -1,12 +1,20 @@
 import { cached_get } from '$lib/google/export';
 import configuration, {get_exhibit_pages} from '$lib/config';
+import { image_list } from '$lib/google/sync_images';
 
+export async function sync_images() {
+  const all_images = await image_list()
+  const total_sync = all_images.map(img => {
+    return cached_get(img.id, img.location, false, new Date(img.modifiedTime))
+      .then(() => true) // throw away the actual value.
+  })
+  return Promise.all(total_sync)
+}
 
 export async function sync_pages() {
-  console.log("syncing pages")
   const promises = [];
   for (let sub of get_exhibit_pages(configuration)) {
-    console.log({sub})
+    if (!sub) continue
     const {link, google_drive_id} = sub;
     if (!sub.google_drive_id) {return}
     const link_parts = link.split('/')
