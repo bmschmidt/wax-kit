@@ -113,7 +113,7 @@ menu:
         google_drive_id: 1yx2RDiiM_6fB_AXwmb__bnrSnkzfejP9vH82bo8O1xk
       - label: Marriage Certificate
         link: '/exhibits/marriage'
-	google_drive_id: 1LhqYXvkpY6y5eXlfLKRpHOAAFPBZhG_Bb4gRXaMEhF8
+        google_drive_id: 1LhqYXvkpY6y5eXlfLKRpHOAAFPBZhG_Bb4gRXaMEhF8
   - label: 'Browse'
     link: '/collection/'
   - label: 'Search'
