@@ -24,7 +24,12 @@ function build_config() {
   return configuration 
 }
 
-export function get_exhibit_pages(configuration) {
+
+const config = build_config()
+export default config;
+
+export function get_exhibit_pages(conf) {
+  const configuration = conf ? conf : config
   const { menu } = configuration
   let exhibits = menu.filter(d => d.label == 'Exhibits')
   if (!exhibits.length) {return}
@@ -34,8 +39,6 @@ export function get_exhibit_pages(configuration) {
   return exhibits.sub
 }
 
-const config = build_config()
-export default config;
 
 function test_config(configuration) {
   // Some trouble shooting so that things fail earlier. This should be expanded

@@ -4,8 +4,6 @@ import { all_images } from './image_management.js'
 import { promises as fs } from 'fs';
 // This parses all collection CSV files from disk and turns them into a site-wide JSON list of records.
 
-const cache = {};
-
 export async function return_dataset(collection_name) {
   const cache = {};
   if (!config.collections[collection_name] || !config.collections[collection_name].metadata || !config.collections[collection_name].metadata.source) {

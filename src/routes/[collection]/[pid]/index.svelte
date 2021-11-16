@@ -1,10 +1,10 @@
 <script context="module">
   export async function load({ page, fetch }) {
-    // const manifest_maker = await import('$lib/iiif/presentation.js').then(d => d.manifest)
     const {collection, pid} = page.params;
-    const host = `../../..`; //`http://localhost:3000`
+    const host = `../../..`;
     const manifest = await fetch(`${host}/iiif/presentation/${collection}:${pid}/manifest.json`)
        .then(d => d.json())
+
     const tileSources = manifest.sequences[0].canvases.map(val => {
       console.log(val)
       return val.images[0].resource.service['@id'] + "/info.json"
@@ -26,6 +26,7 @@
   import { onMount } from 'svelte';
   const { collection, pid } = $page.params
   const { base_url } = config;
+  const google_id = config.collections[collection].metadata.google_drive_id
 
   const manifestUrl = `${base_url}iiif/presentation/${collection}:${pid}/manifest.json`;
 
@@ -55,15 +56,21 @@
 <h1>
   {manifest.label}
 </h1>
-<div id="osd" class="image-viewer"></div>
-<!--This link is necessary to ensure the manifest is statically generated.-->
-<a href={manifestUrl}>IIIF manifest for this item.</a>
 
+<div id="osd" class="image-viewer"></div>
+<div id=links style="display:flex">
+  <!--This link is necessary to ensure the manifest is statically generated.-->
+  <div style="flex-grow:4">
+    <a href={manifestUrl}>IIIF manifest for this item.</a>
+  </div>
+  <div>    
+  <a href="https://docs.google.com/spreadsheets/d/{google_id}/edit">Edit metadata</a>
+  </div>
+</div>
 <dl>
   {#each manifest.metadata as row}
     {#if row.value !== undefined && row.value !== "" && include_field(row.label)}
       <dt>{row.label}</dt><dd>{row.value}
-    
       </dd>
     {/if}
   {/each}

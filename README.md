@@ -8,12 +8,15 @@ This project unifies code to do three things.
    adding `google_drive_id` into the files `_config.yml`; once this is done, you can sync the page against Google and download
    any new or changed files while in dev mode or while building as a node target. (In static site mode, obviously, you can't
    keep it synced to Google, because then it wouldn't be static. For Jekyll, you'd need to use my scripts 'rubberstamp' to do this.
-2. Build IIIF derivatives for images in a collection, and serve them statically using Level 0 compliance. For this, I use the `sharp` node
+2. Build IIIF derivatives for images in a collection, and serve them statically using Level 0 compliance. 
+   For this, I use the `sharp` node
    module which calls `libvips` (must be installed on the system). This is a lot faster than imagemagick. Both the image and presentation APIs for
    IIIF are built entirely inside sveltekit as endpoints, making it easier to configure them and include metadata inside the fields.
-3. Build instantly updating (for development) and static (for permanent presentation) versions of websites. Here I use svelte-kit for both;
+3. Build instantly updating (for development) and static (for permanent presentation) versions of websites.
+   Here I use svelte-kit for both;
    unlike Jekyll, this allows extremely fast re-rerendering and only partial builds. (E.g., in development mode, IIIF derivatives do not need
-   to be built up front--instead, they are generated *on page load* on the fly.
+   to be built up front--instead, they are generated *on page load* on the fly.) It also introduces an intermediate state--for
+   development--in which information. 
 
 It does this while attempting to maintain back-compatability with the data ingest for
 Wax sites, so that you can simply drop in a wax `_data` folder and `_config.yml` file and

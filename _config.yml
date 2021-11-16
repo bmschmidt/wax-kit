@@ -9,11 +9,11 @@
 #
 # Wax-Kit uses Jekyll-style configuraton files.
 
-title:            'Historic Databases'
-description:      'A set of paper databases'
+title:            'Paper Databases'
+description:      'Data on paper'
 url:              'https://paperdata.benschmidt.org/'
 baseurl:          '/'
-copyright:        'copyright Ben Schmidt 2021'
+copyright:        'copyright 2021'
 logo:             '/assets/logo.png'
 
 # ---------------------------------------------------------------
@@ -114,6 +114,9 @@ menu:
       - label: Marriage Certificate
         link: '/exhibits/marriage'
         google_drive_id: 1LhqYXvkpY6y5eXlfLKRpHOAAFPBZhG_Bb4gRXaMEhF8
+      - label: Military payments
+        link: '/exhibits/manifest'
+        google_drive_id: '15-mABLINXzCaJLR1aEdfrVJf1_xLl-pJXRjRsI_PBhk'
   - label: 'Browse'
     link: '/collection/'
   - label: 'Search'

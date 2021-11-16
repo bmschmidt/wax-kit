@@ -26,7 +26,7 @@
 </main>
 
 <footer>
-	Waxy site.
+	
 </footer>
 
 <style>
