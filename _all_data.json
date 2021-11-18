@@ -93,7 +93,7 @@
   },
   {
     "pid": "es5045_d-day-jump-manifest-document",
-    "label": "“D-Day Jump Manifest Document.” Donated by Winfield Wood, Air Mobility Command Museum, 18 Apr. 2015, https://amcmuseum.org/collections/d-day-jump-manifest-document/. ",
+    "label": "Operation Neptune (D-Day)  Parachute Jump Manifest Document",
     "Timestamp": "10/6/2021 20:50:00",
     "Student  name": "Milo Servin",
     "URL for full object": "https://amcmuseum.org/wp-content/uploads/2015/03/d-day-jump-manifest-document.jpg",
@@ -116,7 +116,7 @@
   },
   {
     "pid": "schaffer-kempercountyconfederateenumeration",
-    "label": "Enumeration of Confederate Soldiers, Sailors, and Widows: Kemper County, MISS0066D, Series 1215, Mississippi Department of Archives and History, Jackson, Mississippi  ",
+    "label": "Enumeration of Confederate Soldiers, Sailors, and Widows: Kemper County, Jackson, Mississippi  ",
     "Timestamp": "10/7/2021 14:41:37",
     "Student  name": "Cameron Schaffer",
     "URL for full object": "https://da.mdah.ms.gov/series/osa/1215/kemper/1932/detail/104782",
@@ -139,7 +139,7 @@
   },
   {
     "pid": "convictleasingproject",
-    "label": "“Tracy City Convict Leasing Project.” Accessed 2021. https://fromthepage.com/slaveryproject/convict-leasing-project. ",
+    "label": "Convict Leasing Records from Tracy City, Tennesse between 1870-1896",
     "Timestamp": "10/7/2021 18:49:46",
     "Student  name": "Zac Geinzer",
     "URL for full object": "https://fromthepage.com/slaveryproject/convict-leasing-project",
@@ -169,7 +169,7 @@
     "Citation for full object": "James Madison’s Meteorological Journal vol. 1, 1784-1788",
     "Filename in shared drive folder": "James Madison’s Meteorological Journal",
     "General description of the complete original artifact": "The first volume of James Madison’s meteorological journal is a collection of data on several environmental occurrences such as weather patterns, wind directions, bird migration, and falling of leaves. Madison recorded this data on his plantation called Montpelier. This is the first of two volumes and it records weather information from the years 1784 to 1788. While most of the data set is written by James Madison, certain parts are documented by his wife – Dolley Madison. On each page of the data set, Madison focuses on twelve primary categories that encompass everything that was occurring on his plantation. While Madison typically kept a straightforward data collection process where he would describe the weather or wind in the same way each day, he used the last three categories namely falling of leaves, birds life, and miscellanea in a more casual note-taking manner. In these three sections, Madison would write brief sentences about what he saw such as “peach tree begin to blossom” or “wild geese flying Northward”. Overall, James Madison’s meteorological journal gives a detailed account of the weather conditions and environmental occurrences on his plantation.",
-    "Estimated number of records in data set": "10400",
+    "Estimated number of records in data set": "10,392",
     "Estimated number of fields if this were a database": "12",
     "Estimated time to digitize all records in set (hours)": "On average, I would say that each page would take about 15 minutes to digitize into a spreadsheet. Being that there are 89 pages, I think it would take about 22 hours to digitize all the records in this data set.",
     "Time period when data was created": "The time period when the data was created was from 1784 to 1788.",
@@ -235,7 +235,7 @@
     "Timestamp": "10/8/2021 8:13:49",
     "Student  name": "Matthew Kaufman",
     "URL for full object": "https://catalog.archives.gov/id/44171887",
-    "Citation for full object": "Series: Population Schedules for the 1850 Census, 1850 - 1850 Record Group 29: Records of the Bureau of the Census, 1790 - 2007",
+    "Citation for full object": "US Census 1850 Winslow Homer Entry",
     "Filename in shared drive folder": "1850_USCensus_WinslowHomer_entry",
     "General description of the complete original artifact": "This is an single page of an entry from the 1850 US Census, specifically for Cambridge Massachusetts. This page was from September 23rd, 1850. This census document includes names of persons in families, age, sex, race (whether white, black, or mixed race), profession, value of real estate owned, place of birth, marriage status if married within the year, whether an individual had attended school within the year, whether an individual was over the age of 20 and could not read and write, and whether an individual has a number of disabilities.",
     "Estimated number of records in data set": "42",
@@ -276,8 +276,31 @@
     "wax:id": "19C:ww2letter"
   },
   {
+    "pid": "carnegiehallbookingledger1955",
+    "label": "Carnegie Hall. (1955-2007). Carnegie Hall Booking Ledgers. Booking Ledgers Collection. Carnegie Hall Rose Archives. New York, NY, USA. https://collections.carnegiehall.org/CS.aspx?VP3=SearchResult&ALID=2RRM1TCSBJOS&RW=1536&RH=722&PN=1&IID=2RRM1TOP194K&VBID=2RRMLJKO68TK",
+    "Timestamp": "10/8/2021 16:22:03",
+    "Student  name": "Iris",
+    "URL for full object": "https://collections.carnegiehall.org/CS.aspx?VP3=SearchResult&ALID=2RRM1TCSBJOS&RW=1536&RH=722&PN=1&IID=2RRM1TOP194K&POPUPPN=1&POPUPIID=2RRM1TOP194K#/SearchResult&ALID=2RRM1TCSBJOS&RW=1536&RH=722&PN=1&IID=2RRM1TOP194K&VBID=2RRMLJKO68TK",
+    "Citation for full object": "Carnegie Hall. (1955-2007). Carnegie Hall Booking Ledgers. Booking Ledgers Collection. Carnegie Hall Rose Archives. New York, NY, USA. https://collections.carnegiehall.org/CS.aspx?VP3=SearchResult&ALID=2RRM1TCSBJOS&RW=1536&RH=722&PN=1&IID=2RRM1TOP194K&VBID=2RRMLJKO68TK",
+    "Filename in shared drive folder": "CarnegieHallBookingLedger1955",
+    "General description of the complete original artifact": "Carnegie Hall's booking ledgers used to schedule performances and record every event hosted by Carnegie Hall's venues from 1955 - 2007. For each date, there is a column for each of the three halls (Main, Recital, and Chapter). Within that, there are slots to schedule shows for different times of the day (e.g. matinee, evening), where the name of the performer is recorded.",
+    "Estimated number of records in data set": "24000",
+    "Estimated number of fields if this were a database": "7",
+    "Estimated time to digitize all records in set (hours)": "400",
+    "Time period when data was created": "1955-2007",
+    "Organization creating data": "Carnegie Hall",
+    "Individual who created data (if known or guessable).": "Unknown - Carnegie Hall performance coordinator?",
+    "Shortcomings of this taxonomy for data set (if any)": "The lease close date is not recorded consistently. If a performance was cancelled last minute, it may not be recorded in the ledger. Changes in the schedule are not marked with when the changes were made.",
+    "Notes about the image you chose": "Scheduled performances for Oct 1-2, 1955. On these days, there were many changes in schedule before the performance days. For the Recital Hall and Main Hall, almost the entire day was booked with performances for both days, while the Chapter Hall only had one performance over both days. On October 2 (Sunday), the Church of Healing Christ performed in the morning - this could have been a religious service or event.",
+    "wax:collection": "19C",
+    "wax:images": [
+      "19C:carnegiehallbookingledger1955"
+    ],
+    "wax:id": "19C:carnegiehallbookingledger1955"
+  },
+  {
     "pid": "prajjwal_steamship",
-    "label": "Rosenbaum Volume 03 1894,Subseries 1.3: M. Rosenbaum and Co. ledgers, 1890-1934 HIAS Pennsylvania Records, SCRC 94, Special Collections Research Center, Temple University Libraries, Philadelphia, Pennsylvania",
+    "label": "\n\n\nSteamship purchase ledger from Rosenbaum bank, 1893-94",
     "Timestamp": "10/8/2021 16:48:42",
     "Student  name": "Prajjwal Bhattarai",
     "URL for full object": "https://digital.library.temple.edu/digital/collection/p16002coll16/id/4463/rec/1",
@@ -300,7 +323,7 @@
   },
   {
     "pid": "baseball-scorecard-1888",
-    "label": "https://archives.nypl.org/mss/2835#overview (Spalding baseball collection, Manuscripts and Archives Division, The New York Public Library)",
+    "label": "baseball-scorecard-1888",
     "Timestamp": "10/23/2021 13:03:07",
     "Student  name": "Jin Kim",
     "URL for full object": "https://nyplorg-data-archives-production.s3.amazonaws.com/uploads/collection/pdf_finding_aid/spalding.pdf, https://collection.baseballhall.org/PASTIME/19th-century-scorecard-collection-1872-1899",
@@ -323,7 +346,7 @@
   },
   {
     "pid": "schaffer nyp attendance",
-    "label": "Musician Attendance Book, 1875-1880, 22 Oct 1875 - 24 Apr 1880, Folder 498-02-04, Board of Directors Records, New York Philharmonic Leon Levy Digital Archives. https://archives.nyphil.org/index.php/artifact/03719025-3317-40b1-b5e7-a617c12277fb-0.1",
+    "label": "Musician Attendance Book, 22 Oct 1875 - 24 Apr 1880, New York Philharmonic ",
     "Timestamp": "10/24/2021 16:05:18",
     "Student  name": "Cameron Schaffer",
     "URL for full object": "https://archives.nyphil.org/index.php/artifact/03719025-3317-40b1-b5e7-a617c12277fb-0.1?search-type=singleFilter&search-text=%2A&search-dates-from=01/01/1700&search-dates-to=01/01/1900&doctype=businessRecord&sort-order=asc&sort-column=npb:SortRecordGroup&page=3",
@@ -460,13 +483,13 @@
     "wax:id": "19C:pa civil war records"
   },
   {
-    "pid": "goldbarledger_iriswu",
+    "pid": "goldbarledger",
     "label": "Department of Defense. (1945-1947). Bar List Ledgers: Shipment No. 1 (Containers 4-5). Records of U.S. Occupation Headquarters, World War II, 1923 - 1972, Records Relating to Shipments of Gold and Silver, 1945 - 1947. National Archives at College Park, College Park, MD, USA.",
     "Timestamp": "10/25/2021 13:18:19",
-    "Student  name": "Iris Wu",
+    "Student  name": "Iris",
     "URL for full object": "https://catalog.archives.gov/id/169241498; https://catalog.archives.gov/search?q=ledger&f.parentNaId=4872596&f.level=fileUnit&sort=naIdSort%20asc",
     "Citation for full object": "Department of Defense. (1945-1947). Bar List Ledgers: Shipment No. 1 (Containers 4-5). Records of U.S. Occupation Headquarters, World War II, 1923 - 1972, Records Relating to Shipments of Gold and Silver, 1945 - 1947. National Archives at College Park, College Park, MD, USA.",
-    "Filename in shared drive folder": "GoldBarLedger_IrisWu",
+    "Filename in shared drive folder": "GoldBarLedger",
     "General description of the complete original artifact": "Ledger worksheets of gold bar shipments received by the Foreign Exchange Depository and added to their inventory. This ledger was used to note the qualities of the gold bars shipped to the Depository. The worksheet contains the date the gold bar was received by the Reichsbank, the melter, the assayer, the bar numbers assigned by the US, British Empire, the Reichsbank, and other states, the gross weight in kilos and ounces (converted and actual), and fineness (raw, in ounces, and in kilos). The top also notes which pile these bars are for, the shipment number, and the container number.",
     "Estimated number of records in data set": "6300",
     "Estimated number of fields if this were a database": "20",
@@ -478,9 +501,9 @@
     "Notes about the image you chose": "The bars covered in this part of the ledger have no melter stamped or assayer recorded, while the records for gold bars in other containers usually have at least one, if not both of these fields filled out. Despite the presence of a fineness in kilos column, the column is not filled out while the fineness in ounces column is. This ledger was not a printed template form - though it is created on grid paper, the columns, rows, and headings are hand-drawn/handwritten. ",
     "wax:collection": "19C",
     "wax:images": [
-      "19C:goldbarledger_iriswu"
+      "19C:goldbarledger"
     ],
-    "wax:id": "19C:goldbarledger_iriswu"
+    "wax:id": "19C:goldbarledger"
   },
   {
     "pid": "lewis and clark journals",
@@ -536,7 +559,7 @@
     "URL for full object": "https://catalog.archives.gov/id/183365664",
     "Citation for full object": "Log of U.S.S Vermont: 1/24/1863-12/17/1863",
     "Filename in shared drive folder": "USS Vermont Log.jpg",
-    "General description of the complete original artifact": "This is a log of the positioning throughout the course of each day of the U.S.S Vermont, a Virginia Class Naval Submarine, over almost a years time. The chart which is printed in full and completed by hand, shows the name of the ship commander, the direction that the ship is traveling in each hour of every day, as well as general remarks for each day. The direction of the ship is not listed in precise degrees on a compass, but rather by North, South, East, and West, subdivided further on occasion by NE, NW, SE, and SW. Something I found interesting when observing this dataset, is that there are records for 398 total days, when the time period between the first and last record is only 327 days. I would need to examine this dataset further to determine where this discrepancy lies ",
+    "General description of the complete original artifact": "This is a log of the positioning throughout the course of each day of the U.S.S Vermont over almost a years time. The chart which is printed in full and completed by hand, shows the name of the ship commander, the direction that the ship is traveling in each hour of every day, as well as general remarks for each day. The direction of the ship is not listed in precise degrees on a compass, but rather by North, South, East, and West, subdivided further on occasion by NE, NW, SE, and SW. Something I found interesting when observing this dataset, is that there are records for 398 total days, when the time period between the first and last record is only 327 days. I would need to examine this dataset further to determine where this discrepancy lies ",
     "Estimated number of records in data set": "398",
     "Estimated number of fields if this were a database": "96714",
     "Estimated time to digitize all records in set (hours)": "100",
@@ -553,7 +576,7 @@
   },
   {
     "pid": "washingtonrevolutionarywarexpenses",
-    "label": "Washington, George. George Washington Papers, Series 5, Financial Papers: George Washington's Revolutionary War Expense Account, -1783. /1783, 1775. Manuscript/Mixed Material. Retrieved from the Library of Congress, <www.loc.gov/item/mgw500022/>.",
+    "label": "Washington, George. George Washington Papers, Series 5, Financial Papers: George Washington's Revolutionary War Expense Account, -1783. /1783, 1775. Manuscript/Mixed Material. Retrieved from the Library of Congress",
     "Timestamp": "10/25/2021 16:59:32",
     "Student  name": "Enhua Zhu",
     "URL for full object": "https://www.loc.gov/item/mgw500022/",
@@ -576,7 +599,7 @@
   },
   {
     "pid": "washingtonrevolutionarywarexpenses",
-    "label": "Washington, George. George Washington Papers, Series 5, Financial Papers: George Washington's Revolutionary War Expense Account, -1783. /1783, 1775. Manuscript/Mixed Material. Retrieved from the Library of Congress, <www.loc.gov/item/mgw500022/>.",
+    "label": "Washington, George. George Washington Papers, Series 5, Financial Papers: George Washington's Revolutionary War Expense Account",
     "Timestamp": "10/25/2021 17:25:23",
     "Student  name": "Enhua Zhu",
     "URL for full object": "https://www.loc.gov/item/mgw500022/",
@@ -599,7 +622,7 @@
   },
   {
     "pid": "springfieldbasketball",
-    "label": "Naismith, James. Official Scorebook for the Basketball League at Springfield College,1894-1895 1890-1934, Springfield College Basketball Team Papers. Springfield College, Springfield, Massachusetts. https://springfieldcollege.contentdm.oclc.org/digital/collection/p15370coll2/id/402/rec/8",
+    "label": "Official Scorebook for the Basketball League at Springfield College,1894-1895",
     "Timestamp": "10/25/2021 20:36:37",
     "Student  name": "Prajjwal Bhattarai",
     "URL for full object": "https://springfieldcollege.contentdm.oclc.org/digital/collection/p15370coll2/id/402/rec/8",

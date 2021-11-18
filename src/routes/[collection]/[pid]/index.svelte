@@ -27,16 +27,14 @@
   const { collection, pid } = $page.params
   const { base_url } = config;
   const google_id = config.collections[collection].metadata.google_drive_id
-
+  
   const manifestUrl = `${base_url}iiif/presentation/${collection}:${pid}/manifest.json`;
-
 
   function include_field(k) {
     if (k.startsWith("wax:")) {return false}
     if (k.startsWith("Student ")) {return false}
     return true
   }
-
 
   onMount(() => 
     { import('openseadragon').then(OpenSeadragon =>
@@ -45,7 +43,7 @@
         prefixUrl: `${assets}/assets/openseadragon/images/`,
         preserveViewport:   true,
         visibilityRatio:    1,
-        minZoomLevel:       1,
+        minZoomLevel:       .5,
         defaultZoomLevel:   1,
         sequenceMode:       true,
         tileSources:        tileSources,

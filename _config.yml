@@ -56,7 +56,16 @@ minify_html: false
 collections:
   exhibits:
     output: true
-  19C: # name of collection
+  appendix:
+    output: true
+    metadata:
+      source: 'bigdata2.csv'
+      google_drive_id: '1m8VFI8qQ-AOL0sXcTnE2aTUlCspaKQbbGZbn6sHTHY0'
+    images:
+      source: 'raw_images/images'
+      google_drive_ids:
+        - '1xG-qqCFYGT6plpnGOKYL_qR_blf_Ctry'
+  datasets: # name of collection
     output: true # makes sure pages are output as html files
     layout: 'generic_collection_item' # the layout for the pages to use
     metadata:
@@ -102,6 +111,9 @@ menu:
         link: '/credits/'
   - label: 'Exhibits'
     sub:
+      - label: "Demo template"
+        link: '/exhibits/demo'
+        google_drive_id: '1FTt5zCVWuX3Pmm_nnRgijv-N3AGqZa_vMwwMIzgG72Y'
       - label: "Lomax"
         link: '/exhibits/lomax'
         google_drive_id: 1IH8I6B5Yi0JBpA7q5vjMhnCFUmisYWV3h12o_bF03kA
@@ -109,14 +121,47 @@ menu:
         link: '/exhibits/ymca'
         google_drive_id: 1NDRm_qLqAFONg0moVl8V3SPB-X4WcF9kzIwXUdh-Kr4
       - label: "Baseball Scorecards"
-        link: '/exhibits/baseball'
+        link: '/exhibits/baseball-2'
         google_drive_id: 1yx2RDiiM_6fB_AXwmb__bnrSnkzfejP9vH82bo8O1xk
       - label: Marriage Certificate
         link: '/exhibits/marriage'
         google_drive_id: 1LhqYXvkpY6y5eXlfLKRpHOAAFPBZhG_Bb4gRXaMEhF8
-      - label: Military payments
+      - label: Operation Neptune Manifest
         link: '/exhibits/manifest'
         google_drive_id: '15-mABLINXzCaJLR1aEdfrVJf1_xLl-pJXRjRsI_PBhk'
+      - label: Prison Labor records
+        link: '/exhibits/prison'
+        google_drive_id: 1D_NW525nyMUiD57pcSaoK0jmK8elb31bgvOFX0WgSxQ
+      - label: Banks and Steamships
+        link: '/exhibits/steamships'
+        google_drive_id: '1YTVZxPNfw9msleuSSkQixGiFE4VLPiC10jP-quy-YrA'
+      - label: USS Vermont Logs
+        link: '/exhibits/vermont'
+        google_drive_id: '17w_Q7eJCZcdzncV3SJ3U_ft-2OKAuyRYjok8BDcYMXI'
+      - label: Carnegie Hall Ledgers
+        link: '/exhibits/carnegie-hall'
+        google_drive_id: '17wPdvIwB-n1O0eAo8WzxWv9_9mHaobA2RY5RrVpB9AQ'
+      - label: James Madison's weather
+        link: '/exhibits/madison'
+        google_drive_id: '1-5kBAOl8kaWHY-lQgjZsBX4Bmn_BPwbtVHLjmLUSlqo'
+      - label: Cavalry Medical Records
+        link: '/exhibits/cavalry-medical'
+        google_drive_id: 1Fv6dz3qwTaTcSYMFDTRmJl3oueewDW8kclPXu4S7UhA
+      - label: Tribal Census Registers
+        google_drive_id: '10TZCxiZVFQdeEyHwvhjbaopkZ6mSON_CEVBKyMCYriA'
+        link: '/exhibits/tribal-census'
+      - label: Baseball Scorecards
+        google_drive_id: '17wblCoADDmZ4wkD6MBY0OhB02g4U4w8NYuAQQbkta-0'
+        link: '/exhibits/scorecards'
+      - label: Draft cards
+        google_drive_id: '1zL3skFCSNMHMstjphTchHxK7T5tn0Qiov7YYINShGRo'
+        link: '/exhibits/draft-cards'
+      - label: Navy Logs
+        google_drive_id: '103iaxwowJ6vSu3ECcYjF0YhAyLYNA3qo-n2Ek-5_AIk'
+        link: '/exhibits/navy'
+      - label: NY Philharmonic Attendance
+        google_drive_id: '1cNhrLoK8DErsshmupAUFJut3WT9_TYcX3igGcwl2SaU'
+        link: '/exhibits/philharmonic'
   - label: 'Browse'
     link: '/collection/'
   - label: 'Search'
