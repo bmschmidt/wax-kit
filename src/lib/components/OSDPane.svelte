@@ -18,7 +18,7 @@
 
 <script>
   export let pid;
-  export let collection = "19C"
+  export let collection = "datasets"
   import { assets } from '$app/paths';
   import { onMount } from 'svelte';
   const { base_url } = config;
