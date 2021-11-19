@@ -2,11 +2,15 @@
   import { data } from '$lib/data';
   import ClickableThumb from '$lib/components/ClickableThumb.svelte'
   import { page } from "$app/stores";
+  import { filter } from 'markdown-it/lib/common/html_blocks';
 
-  const { collection } = $page.params
+  $: collection = $page.params.collection
   let regex = '';
-  
+
   $ : keep = function(datum) {
+    if (datum['wax:collection'] !== collection) {
+      return false
+    }
     if (regex === '') {
       return true;
     }
@@ -25,12 +29,13 @@
 	<title>Collections index</title>
 </svelte:head>
 
-<div id="filter" >
-  <input bind:value={regex}/>
+<div id="filter">
+  Search within metadata: <input bind:value={regex}/>
 </div>
+
 <div class=gallery>
   {#each $data as record }
-    {#if record}
+    {#if record && keep(record) }
       <ClickableThumb {record}></ClickableThumb>
     {/if}
   {/each}
@@ -44,8 +49,7 @@
   }
 
   #filter {
-    max-width: 25%;
-    margin: auto;
-
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>

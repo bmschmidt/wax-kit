@@ -4,10 +4,12 @@ import { dev } from '$app/env'
 
 /* NOTE  THIS WILL ONLY WORK IF THE PORT IS 3000 */
 
+// In dev mode, this injects 'localhost:3000' as the root URL, 
+// even inside IIIF identifiers.
+
 function build_config() {
 
-  const configuration = load(t);
-
+  const configuration = load(t)
   if (configuration.iiif_root === undefined) {
     configuration.iiif_root = dev ? 
       "http://localhost:3000/iiif/image" :

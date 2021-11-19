@@ -20,7 +20,7 @@
   import { get_exhibit_pages } from '$lib/config'
   const page = get_exhibit_pages()
     .map(d => {
-      d.slug = d.link.replace(/\/$/, "").split("/").pop()
+      d.slug = d.site_link ? d.site_link.replace(/\/$/, "").split("/").pop() : undefined
       return d
     })
     .filter(d => d.slug === slug)[0]

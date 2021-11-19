@@ -19,7 +19,8 @@
 				</a>
 			</li>
 			<li class:active={$page.path === '/'}><a sveltekit:prefetch href={base == '' ? "/" : base }>Home</a></li>
-			<li class:active={$page.path === '/about'}><a sveltekit:prefetch href={base}/about>About</a></li>
+			<li class:active={$page.path === '/about'}><a sveltekit:prefetch href={base}/about>About the data</a></li>
+			<li class:active={$page.path === '/students'}><a sveltekit:prefetch href={base}/students>Student Instructions</a></li>
 			{#each Object.keys(config.collections) as collection}
 			<li class:active={$page.path === "/" + collection}><a sveltekit:prefetch href={base}/{collection}>{collection}</a></li>
 			{/each}
