@@ -11,7 +11,7 @@
   <div class="article-container">
     {#each pages as p}
       {#if p}
-      <ArticleCard {...p} />
+       <ArticleCard {...p} />
       {/if}
     {/each}
   </div>

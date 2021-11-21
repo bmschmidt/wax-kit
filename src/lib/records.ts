@@ -15,8 +15,8 @@ export async function return_dataset(collection_name) {
     return cache[source_csv];
   }
   const full_imagelist = await all_images(collection_name);
-  const promise = fs.readFile(source_csv)
-  .then( (data) => csvParse('' + data))
+  const promise = fs.readFile(source_csv, {encoding : 'utf-8'})
+  .then( (data) => csvParse(data))
   .then(d => 
     d.
     filter(d => full_imagelist.get(d.pid.toLowerCase()))
@@ -24,8 +24,8 @@ export async function return_dataset(collection_name) {
       entry['pid'] = entry['pid'].toLowerCase(); // Case insensitivity as lowercase.
       entry["wax:collection"] = collection_name;
       entry["wax:images"] = full_imagelist.get(entry['pid'].toLowerCase()).map(d => d['wax:id']);
-      const my_str = `${collection_name}:${entry.pid}`
-      entry['wax:id'] = my_str
+      const my_str = `${collection_name}:${entry.pid}`;
+      entry['wax:id'] = my_str;
       return entry
     })
 //    .filter(d => d["wax:images"].length || console.log(d['wax:images']))
@@ -52,7 +52,5 @@ export async function reparse_all_datasets() {
   })
   .catch(err => {console.warn(err)})
 
-  const jsonified = JSON.stringify(all_data, null, 2);
-  await fs.writeFile('_all_data.json', jsonified)
   return all_data
 }

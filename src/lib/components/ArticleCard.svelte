@@ -1,7 +1,6 @@
 <script>
   export let title
   export let author_for_public_display
-  export let google_drive_id
   export let site_link
   export let sentence_summary
   export let demo_image_id

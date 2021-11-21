@@ -15,7 +15,7 @@ async function download_resource(drive: drive_v3.Resource$Files, id: string, loc
       .then(res =>  
         res.data
           .on('end', () =>  {
-            console.log("DONE")
+            console.log("DONE downloading", {location})
             fout.end(undefined, undefined, 
               () => resolve(fs.readFile(location)))
           })
@@ -32,6 +32,7 @@ async function uncached_get(auth: any, id: any, mimeType: string, location: stri
     .files
 
   if (mimeType == 'application/octet-stream') {
+      console.log("DOWNLOADING", {location})
       return await download_resource(drive, id, location, fout)
   } else {
     let full_text : string = await new Promise((resolve) => {
@@ -85,7 +86,11 @@ async function remote_mod_time(auth: any, id: any) {
     .then(d => new Date(d.data.modifiedTime))
 }
 
-export async function cached_get(id: any, location: PathLike | fs.FileHandle, return_existing_immediately = true, mod_time = undefined): Promise<string | Buffer> {
+export async function cached_get(id: any, 
+  location: PathLike | fs.FileHandle, 
+  return_existing_immediately = true,
+  mod_time = undefined,
+  empty_return = false): Promise<string | Buffer> {
   const mod_remote = mod_time ? mod_time : run_with_auth(remote_mod_time, id)
   const mod_local = fs
     .stat(location)
@@ -98,7 +103,7 @@ export async function cached_get(id: any, location: PathLike | fs.FileHandle, re
       ([mod_remote, mod_local]) => {
       if (mod_remote < mod_local) {
         console.log("getting local", location)
-        return fs.readFile(location)
+        return empty_return ? "" : fs.readFile(location)
       } else {
         console.log("getting remote", location, mod_remote, mod_local)
         let mimeType: string;
@@ -112,7 +117,7 @@ export async function cached_get(id: any, location: PathLike | fs.FileHandle, re
           mimeType = "application/octet-stream"
         }
         const update_process = run_with_auth(uncached_get, id, mimeType, location)
-          .catch(err => fs.readFile(location))
+          .catch(err => empty_return ? "" : fs.readFile(location))
         if (mimeType == 'text/csv') {
           return update_process.then(async (f) => {
             await reparse_all_datasets()
@@ -120,9 +125,9 @@ export async function cached_get(id: any, location: PathLike | fs.FileHandle, re
           })
         }
         if (return_existing_immediately && mod_local > new Date(1)) {
-          return fs.readFile(location)
+          return empty_return ? "" : fs.readFile(location)
         } else {
-          return update_process; 
+          return empty_return ? "" : update_process; 
         }
       }
       })

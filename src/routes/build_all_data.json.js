@@ -1,4 +1,4 @@
-import { reparse_all_datasets } from '$lib/records.js'
+import { reparse_all_datasets } from '$lib/records'
 
 export async function get() {
   reparse_all_datasets()

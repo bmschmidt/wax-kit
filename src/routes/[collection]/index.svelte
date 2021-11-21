@@ -3,14 +3,15 @@
   import ClickableThumb from '$lib/components/ClickableThumb.svelte'
   import { page } from "$app/stores";
 
-  const { collection } = $page.params
+  $: collection = $page.params.collection;
+
   let regex = '';
-  
+  $: matcher = new RegExp(regex)
   $ : keep = function(datum) {
+    if (datum['wax:collection'] !== collection) return false
     if (regex === '') {
       return true;
     }
-    const matcher = new RegExp(regex)
     for (let k of Object.keys(datum)) {
       if (datum[k].match && datum[k].match(matcher)) {
         return true;
@@ -26,11 +27,12 @@
 </svelte:head>
 
 <div id="filter" >
+  Search in this collection:
   <input bind:value={regex}/>
 </div>
 <div class=gallery>
   {#each $data as record }
-    {#if record}
+    {#if record && keep(record) }
       <ClickableThumb {record}></ClickableThumb>
     {/if}
   {/each}
@@ -45,7 +47,8 @@
 
   #filter {
     max-width: 25%;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
 
   }
 </style>

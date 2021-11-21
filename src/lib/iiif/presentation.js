@@ -1,8 +1,7 @@
 import config from '$lib/config'
 import { dev } from '$app/env';
 import { image_manifest } from '$lib/iiif/image';
-import data_raw from '../../../_all_data.json?raw'
-const data = JSON.parse(data_raw);
+import { reparse_all_datasets } from '$lib/records';
 
 const img_cache = {};
 const root = dev ? "" : config.url 
@@ -22,6 +21,7 @@ export async function get_images(id) {
   if (img_cache[id]) {
     return img_cache[id];
   }
+  const data = await reparse_all_datasets();
   const image_set = data.filter(d => d['wax:id'] == id)
   if (image_set.length == 0) {
     return []
@@ -40,6 +40,8 @@ export async function manifest(id) {
   if (sequences[0] == undefined) {
     sequences = [];    
   }
+  const data = await reparse_all_datasets();;
+
   const d = data.filter(d => d['wax:id'] == id)[0]
   const individual_images = d['wax:images']
   const first_image = individual_images[0]
@@ -49,7 +51,6 @@ export async function manifest(id) {
     throw new Error(id + "IS UNDEFINED: " + JSON.stringify(all_images))
   } */
 
-  const first_image_id = first_image['@id'];
   const manifest = {
       "@context": "http://iiif.io/api/presentation/2/context.json",
       "@id": `${iiif_root}/presentation/${id}`,
@@ -112,8 +113,6 @@ export async function sequence(id) {
   if (images.length === 0) {
     throw new Error("pid " + id + " HAS NO IMAGES")
   }
-  const first_image = images[0];
-  const first_image_id = first_image['@id'];
   const sequence = 
     {
       "@id": `${root}/iiif/sequence/${id}.json`,
