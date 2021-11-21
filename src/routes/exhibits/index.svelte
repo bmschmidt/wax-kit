@@ -15,8 +15,6 @@
       {/if}
     {/each}
   </div>
-
-
 </ul>
 
 <style>

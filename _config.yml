@@ -56,15 +56,6 @@ minify_html: false
 collections:
   exhibits:
     output: true
-  appendix:
-    output: true
-    metadata:
-      source: 'bigdata2.csv'
-      google_drive_id: '1m8VFI8qQ-AOL0sXcTnE2aTUlCspaKQbbGZbn6sHTHY0'
-    images:
-      source: 'raw_images/images'
-      google_drive_ids:
-        - '1xG-qqCFYGT6plpnGOKYL_qR_blf_Ctry'
   datasets: # name of collection
     output: true # makes sure pages are output as html files
     layout: 'generic_collection_item' # the layout for the pages to use
@@ -74,6 +65,15 @@ collections:
       google_drive_id: '1dAIKPxhCmqgz3r9h21_muJolEVGzRYIN7Syg1_js6qI'
     images:
       source: 'raw_images/images' # path to the directory of images within `_data`
+      google_drive_ids:
+        - '1xG-qqCFYGT6plpnGOKYL_qR_blf_Ctry'
+  appendix:
+    output: true
+    metadata:
+      source: 'bigdata2.csv'
+      google_drive_id: '1m8VFI8qQ-AOL0sXcTnE2aTUlCspaKQbbGZbn6sHTHY0'
+    images:
+      source: 'raw_images/images'
       google_drive_ids:
         - '1xG-qqCFYGT6plpnGOKYL_qR_blf_Ctry'
 # --------------------------------------------------------------

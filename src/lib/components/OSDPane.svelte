@@ -1,30 +1,13 @@
-<script context="module">
-
-  export async function load({ page, fetch }) {
-    const {collection, pid} = page.params;
-    const host = `../../..`;
-
-    const tileSources = manifest.sequences[0].canvases.map(val => {
-      console.log(val)
-      return val.images[0].resource.service['@id'] + "/info.json"
-    })
-    return { props: { 
-      manifest : JSON.parse(JSON.stringify(manifest)),
-      tileSources : JSON.parse(JSON.stringify(tileSources))
-    }
-    }
-  }
-</script>
-
 <script>
   export let pid;
-  export let collection = "datasets"
+  export let collection;
   import { assets } from '$app/paths';
   import { onMount } from 'svelte';
-  const { base_url } = config;
-  const google_id = config.collections[collection].metadata.google_drive_id
   import config from '$lib/config'
 
+  const { base_url } = config;
+  console.log(pid, collection, config.collections[collection])
+  const google_id = config.collections[collection].metadata.google_drive_id
 
   const manifestUrl = `${base_url}iiif/presentation/${collection}:${pid}/manifest.json`;
 
@@ -64,5 +47,6 @@
     min-height:480px;
     width:100%;
     height:550px;
+    margin:15px;
   }
 </style>
