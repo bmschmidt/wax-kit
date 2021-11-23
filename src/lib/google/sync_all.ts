@@ -15,15 +15,15 @@ export async function sync_pages() {
   const promises = [];
   for (let sub of get_exhibit_pages(configuration)) {
     if (!sub) continue
-    const {link, google_drive_id} = sub;
-    if (!sub.google_drive_id) {return}
-    const link_parts = link.split('/')
+    const {site_link, google_drive_id} = sub;
+    if (!site_link) continue
+    if (!google_drive_id) {return}
+    const link_parts = site_link.split('/')
     let slug = ''
     while (slug == '' && link_parts.length) {
       slug = link_parts.pop()
     }
-    console.log({slug})
-    console.log({slug:`_exhibits/${slug}.md`})
+    console.log("getting", {slug:`_exhibits/${slug}.md`})
     promises.push(
       cached_get(
         google_drive_id, 

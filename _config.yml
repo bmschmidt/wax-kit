@@ -112,8 +112,8 @@ menu:
   - label: 'Exhibits'
     sub: [
       {
-        "title": "Demo template",
-        "author_for_public_display": "",
+        "title": "Demonstration Essay",
+        "author_for_public_display": "Professor Schmidt",
         "google_drive_id": "1FTt5zCVWuX3Pmm_nnRgijv-N3AGqZa_vMwwMIzgG72Y",
         "site_link": "/exhibits/demo",
         "sentence_summary": "A demonstration for students of how this works.",
@@ -153,11 +153,11 @@ menu:
       },
       {
         "title": "Operation Neptune Manifest",
-        "author_for_public_display": "",
+        "author_for_public_display": "Milo Servin",
         "google_drive_id": "15-mABLINXzCaJLR1aEdfrVJf1_xLl-pJXRjRsI_PBhk",
         "site_link": "/exhibits/manifest",
-        "sentence_summary": "",
-        "demo_image_id": ""
+        "sentence_summary": "The development of more advanced data management systems analyzed through a WW2 Jump Manifest.",
+        "demo_image_id": "datasets/es5045_d-day-jump-manifest-document"
       },
       {
         "title": "Prison Labor records",
@@ -169,18 +169,18 @@ menu:
       },
       {
         "title": "Banks and Steamships",
-        "author_for_public_display": "",
+        "author_for_public_display": "Prajjwal Bhattarai",
         "google_drive_id": "1YTVZxPNfw9msleuSSkQixGiFE4VLPiC10jP-quy-YrA",
         "site_link": "/exhibits/steamships",
-        "sentence_summary": "",
-        "demo_image_id": ""
+        "sentence_summary": "The unique position of immigrant banks in early twentieth century immigrant communities reflected through steamship ticket purchase ledgers",
+        "demo_image_id": "datasets/prajjwal_steamship"
       },
       {
         "title": "USS Vermont Logs",
-        "author_for_public_display": "",
+        "author_for_public_display": "Matthew Kaufman",
         "google_drive_id": "17w_Q7eJCZcdzncV3SJ3U_ft-2OKAuyRYjok8BDcYMXI",
         "site_link": "/exhibits/vermont",
-        "sentence_summary": "",
+        "sentence_summary": "An analysis of Naval logs from the USS Vermont",
         "demo_image_id": ""
       },
       {
@@ -188,23 +188,23 @@ menu:
         "author_for_public_display": "",
         "google_drive_id": "17wPdvIwB-n1O0eAo8WzxWv9_9mHaobA2RY5RrVpB9AQ",
         "site_link": "/exhibits/carnegie-hall",
-        "sentence_summary": "",
-        "demo_image_id": ""
+        "sentence_summary": "Exploring coordination of information gathering and efficacy of collecting information on paper through Carnegie Hall's booking ledgers.",
+        "demo_image_id": "datasets/carnegiehallbookingledger1955"
       },
       {
-        "title": "James Madison's weather",
+        "title": "James Madison's Meteorological Journal",
         "author_for_public_display": "",
         "google_drive_id": "1-5kBAOl8kaWHY-lQgjZsBX4Bmn_BPwbtVHLjmLUSlqo",
         "site_link": "/exhibits/madison",
-        "sentence_summary": "",
-        "demo_image_id": ""
+        "sentence_summary": "How the current digitization process leads to crucial historical information being lost",
+        "demo_image_id": "datasets/Madison Weather Journal Page"
       },
       {
         "title": "Cavalry Medical Records",
-        "author_for_public_display": "",
+        "author_for_public_display": "Daija Dewberry",
         "google_drive_id": "1Fv6dz3qwTaTcSYMFDTRmJl3oueewDW8kclPXu4S7UhA",
         "site_link": "/exhibits/cavalry-medical",
-        "sentence_summary": "",
+        "sentence_summary": "The effects of digitization on a database examined through the U.S. government's early efforts in database creation.",
         "demo_image_id": ""
       },
       {
@@ -217,10 +217,10 @@ menu:
       },
       {
         "title": "Baseball Scorecards",
-        "author_for_public_display": "",
+        "author_for_public_display": "Jaz Quaranta",
         "google_drive_id": "17wblCoADDmZ4wkD6MBY0OhB02g4U4w8NYuAQQbkta-0",
         "site_link": "/exhibits/scorecards",
-        "sentence_summary": "",
+        "sentence_summary": "An examination of a timeline of a set of baseball scorecards, and how their rule changes allow for a better understanding of the episteme",
         "demo_image_id": ""
       },
       {
@@ -236,7 +236,7 @@ menu:
         "author_for_public_display": "",
         "google_drive_id": "103iaxwowJ6vSu3ECcYjF0YhAyLYNA3qo-n2Ek-5_AIk",
         "site_link": "/exhibits/navy",
-        "sentence_summary": "",
+        "sentence_summary": "A collection of deck logs from US Navy ships during WWII",
         "demo_image_id": ""
       },
       {
