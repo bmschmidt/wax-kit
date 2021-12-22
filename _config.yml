@@ -117,15 +117,25 @@ menu:
         "google_drive_id": "1FTt5zCVWuX3Pmm_nnRgijv-N3AGqZa_vMwwMIzgG72Y",
         "site_link": "/exhibits/demo",
         "sentence_summary": "A demonstration for students of how this works.",
-        "demo_image_id": "datasets/bell_aircraft_complaint_page_01"
+        "demo_image_id": "datasets/bell_aircraft_complaint_page_01",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/1FTt5zCVWuX3Pmm_nnRgijv-N3AGqZa_vMwwMIzgG72Y/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/datasets:bell_aircraft_complaint_page_01.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
         "title": "Lomax",
-        "author_for_public_display": "",
+        "author_for_public_display": "Enhua Zhu",
         "google_drive_id": "1IH8I6B5Yi0JBpA7q5vjMhnCFUmisYWV3h12o_bF03kA",
         "site_link": "/exhibits/lomax",
-        "sentence_summary": "",
-        "demo_image_id": ""
+        "sentence_summary": "A collection of questionnaire answered by famous folk musicians in Lomax's study",
+        "demo_image_id": "datasets/lomax_form_1",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/1IH8I6B5Yi0JBpA7q5vjMhnCFUmisYWV3h12o_bF03kA/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/datasets:lomax_form_1.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
         "title": "YMCA Punch Cards",
@@ -133,15 +143,25 @@ menu:
         "google_drive_id": "1NDRm_qLqAFONg0moVl8V3SPB-X4WcF9kzIwXUdh-Kr4",
         "site_link": "/exhibits/ymca",
         "sentence_summary": "",
-        "demo_image_id": ""
+        "demo_image_id": "",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/1NDRm_qLqAFONg0moVl8V3SPB-X4WcF9kzIwXUdh-Kr4/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
         "title": "Baseball Scorecards",
-        "author_for_public_display": "",
+        "author_for_public_display": "Jin Kim",
         "google_drive_id": "1yx2RDiiM_6fB_AXwmb__bnrSnkzfejP9vH82bo8O1xk",
         "site_link": "/exhibits/baseball-2",
-        "sentence_summary": "",
-        "demo_image_id": ""
+        "sentence_summary": "The evolution of baseball through a collection of scorecards",
+        "demo_image_id": "datasets/baseball-scorecard-1888",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/1yx2RDiiM_6fB_AXwmb__bnrSnkzfejP9vH82bo8O1xk/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/datasets:baseball-scorecard-1888.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
         "title": "Marriage Certificate",
@@ -149,7 +169,12 @@ menu:
         "google_drive_id": "1LhqYXvkpY6y5eXlfLKRpHOAAFPBZhG_Bb4gRXaMEhF8",
         "site_link": "/exhibits/marriage",
         "sentence_summary": "",
-        "demo_image_id": ""
+        "demo_image_id": "",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/1LhqYXvkpY6y5eXlfLKRpHOAAFPBZhG_Bb4gRXaMEhF8/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
         "title": "Operation Neptune Manifest",
@@ -157,15 +182,25 @@ menu:
         "google_drive_id": "15-mABLINXzCaJLR1aEdfrVJf1_xLl-pJXRjRsI_PBhk",
         "site_link": "/exhibits/manifest",
         "sentence_summary": "The development of more advanced data management systems analyzed through a WW2 Jump Manifest.",
-        "demo_image_id": "datasets/es5045_d-day-jump-manifest-document"
+        "demo_image_id": "datasets/es5045_d-day-jump-manifest-document",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/15-mABLINXzCaJLR1aEdfrVJf1_xLl-pJXRjRsI_PBhk/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/datasets:es5045_d-day-jump-manifest-document.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
-        "title": "Prison Labor records",
+        "title": "Prison Labor Records",
         "author_for_public_display": "",
         "google_drive_id": "1D_NW525nyMUiD57pcSaoK0jmK8elb31bgvOFX0WgSxQ",
         "site_link": "/exhibits/prison",
-        "sentence_summary": "",
-        "demo_image_id": ""
+        "sentence_summary": "Exploring how thousands of prisoners were rented by the state to a private corporation",
+        "demo_image_id": "dataset/convictLeasingProject",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/1D_NW525nyMUiD57pcSaoK0jmK8elb31bgvOFX0WgSxQ/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/dataset:convictLeasingProject.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
         "title": "Banks and Steamships",
@@ -173,15 +208,25 @@ menu:
         "google_drive_id": "1YTVZxPNfw9msleuSSkQixGiFE4VLPiC10jP-quy-YrA",
         "site_link": "/exhibits/steamships",
         "sentence_summary": "The unique position of immigrant banks in early twentieth century immigrant communities reflected through steamship ticket purchase ledgers",
-        "demo_image_id": "datasets/prajjwal_steamship"
+        "demo_image_id": "datasets/prajjwal_steamship",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/1YTVZxPNfw9msleuSSkQixGiFE4VLPiC10jP-quy-YrA/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/datasets:prajjwal_steamship.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
         "title": "USS Vermont Logs",
-        "author_for_public_display": "Matthew Kaufman",
+        "author_for_public_display": "",
         "google_drive_id": "17w_Q7eJCZcdzncV3SJ3U_ft-2OKAuyRYjok8BDcYMXI",
         "site_link": "/exhibits/vermont",
-        "sentence_summary": "An analysis of Naval logs from the USS Vermont",
-        "demo_image_id": ""
+        "sentence_summary": "An analysis of Naval logs from the USS Vermont as an exploration of the shortcomings of digitization",
+        "demo_image_id": "appendix/581208-vermont-001-006",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/17w_Q7eJCZcdzncV3SJ3U_ft-2OKAuyRYjok8BDcYMXI/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/appendix::581208-vermont-001-006.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
         "title": "Carnegie Hall Ledgers",
@@ -189,31 +234,51 @@ menu:
         "google_drive_id": "17wPdvIwB-n1O0eAo8WzxWv9_9mHaobA2RY5RrVpB9AQ",
         "site_link": "/exhibits/carnegie-hall",
         "sentence_summary": "Exploring coordination of information gathering and efficacy of collecting information on paper through Carnegie Hall's booking ledgers.",
-        "demo_image_id": "datasets/carnegiehallbookingledger1955"
+        "demo_image_id": "datasets/carnegiehallbookingledger1955",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/17wPdvIwB-n1O0eAo8WzxWv9_9mHaobA2RY5RrVpB9AQ/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/datasets:carnegiehallbookingledger1955.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
         "title": "James Madison's Meteorological Journal",
         "author_for_public_display": "",
         "google_drive_id": "1-5kBAOl8kaWHY-lQgjZsBX4Bmn_BPwbtVHLjmLUSlqo",
         "site_link": "/exhibits/madison",
-        "sentence_summary": "How the current digitization process leads to crucial historical information being lost",
-        "demo_image_id": "datasets/Madison Weather Journal Page"
+        "sentence_summary": "How the current digitization process leads to a loss of crucial historical information.",
+        "demo_image_id": "datasets/Madison Weather Journal Page",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/1-5kBAOl8kaWHY-lQgjZsBX4Bmn_BPwbtVHLjmLUSlqo/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/datasets:Madison Weather Journal Page.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
-        "title": "Cavalry Medical Records",
+        "title": "Examining Data Loss in Digitization Through Early Data Databases",
         "author_for_public_display": "Daija Dewberry",
         "google_drive_id": "1Fv6dz3qwTaTcSYMFDTRmJl3oueewDW8kclPXu4S7UhA",
         "site_link": "/exhibits/cavalry-medical",
-        "sentence_summary": "The effects of digitization on a database examined through the U.S. government's early efforts in database creation.",
-        "demo_image_id": ""
+        "sentence_summary": "The effects of digitization examined through the U.S. government's early efforts in database creation.",
+        "demo_image_id": "datasets/Dewberry_archiveexample",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/1Fv6dz3qwTaTcSYMFDTRmJl3oueewDW8kclPXu4S7UhA/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/datasets:Dewberry_archiveexample.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
-        "title": "Tribal Census Registers",
+        "title": "Tribal Census Rolls",
         "author_for_public_display": "",
         "google_drive_id": "10TZCxiZVFQdeEyHwvhjbaopkZ6mSON_CEVBKyMCYriA",
         "site_link": "/exhibits/tribal-census",
-        "sentence_summary": "",
-        "demo_image_id": ""
+        "sentence_summary": "Census roll for the Three Affiliated Tribes located on the Fort Berthold Indian Reservation in central North Dakota between 1877 and 1902, and collected by the Record of the Bureau of Indian Affairs, Department of the Interior. ",
+        "demo_image_id": "datasets/tribal census roll - liberty inocencio",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/10TZCxiZVFQdeEyHwvhjbaopkZ6mSON_CEVBKyMCYriA/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/datasets:tribal census roll - liberty inocencio.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
         "title": "Baseball Scorecards",
@@ -221,15 +286,25 @@ menu:
         "google_drive_id": "17wblCoADDmZ4wkD6MBY0OhB02g4U4w8NYuAQQbkta-0",
         "site_link": "/exhibits/scorecards",
         "sentence_summary": "An examination of a timeline of a set of baseball scorecards, and how their rule changes allow for a better understanding of the episteme",
-        "demo_image_id": ""
+        "demo_image_id": "appendix/baseball_scorecard_1867",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/17wblCoADDmZ4wkD6MBY0OhB02g4U4w8NYuAQQbkta-0/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/appendix:baseball_scorecard_1867.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
-        "title": "Draft cards",
+        "title": "World War II Draft Registration Cards",
         "author_for_public_display": "",
         "google_drive_id": "1zL3skFCSNMHMstjphTchHxK7T5tn0Qiov7YYINShGRo",
         "site_link": "/exhibits/draft-cards",
-        "sentence_summary": "",
-        "demo_image_id": ""
+        "sentence_summary": "The examination of WWII draft cards through digitized datasets and the effect digitization can have on these artifacts.",
+        "demo_image_id": "appendix/wwiidraftreg",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/1zL3skFCSNMHMstjphTchHxK7T5tn0Qiov7YYINShGRo/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/appendix:wwiidraftreg.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
         "title": "Navy Logs",
@@ -237,15 +312,51 @@ menu:
         "google_drive_id": "103iaxwowJ6vSu3ECcYjF0YhAyLYNA3qo-n2Ek-5_AIk",
         "site_link": "/exhibits/navy",
         "sentence_summary": "A collection of deck logs from US Navy ships during WWII",
-        "demo_image_id": ""
+        "demo_image_id": "",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/103iaxwowJ6vSu3ECcYjF0YhAyLYNA3qo-n2Ek-5_AIk/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       },
       {
         "title": "NY Philharmonic Attendance",
-        "author_for_public_display": "",
+        "author_for_public_display": "Cameron Schaffer",
         "google_drive_id": "1cNhrLoK8DErsshmupAUFJut3WT9_TYcX3igGcwl2SaU",
         "site_link": "/exhibits/philharmonic",
-        "sentence_summary": "",
-        "demo_image_id": ""
+        "sentence_summary": "Forms of organizing the attendance ledger for the New York Philharmonic through the 1870's",
+        "demo_image_id": "datasets/schafferexample1",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/1cNhrLoK8DErsshmupAUFJut3WT9_TYcX3igGcwl2SaU/edit",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "https://paperdata.benschmidt.org/thumbnails/datasets:schafferexample1.jpg",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
+      },
+      {
+        "title": "Kansas Alien Enemy Affidavits ",
+        "author_for_public_display": "Mimi Chen",
+        "google_drive_id": "1pqDk8h2uluNKC50lBWc_BG8zuJMzRFiP4bRhCpO9hVE",
+        "site_link": "/exhibits/kansas",
+        "sentence_summary": "A collection of registrations completed by German-Americans residing in Kansas during World War I",
+        "demo_image_id": "",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "https://docs.google.com/document/d/1pqDk8h2uluNKC50lBWc_BG8zuJMzRFiP4bRhCpO9hVE/",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
+      },
+      {
+        "title": "Discovery Vessel Logbook",
+        "author_for_public_display": "Paula Seraphim",
+        "google_drive_id": "1Z7dyZgLR7PCfDKyiPNRYzyeIrYOlbIncFipp05yj0vQ",
+        "site_link": "/exhibits/discovery",
+        "sentence_summary": "A year-long collection of daily entries of the Felix Discovery Vessel from 1850",
+        "demo_image_id": "",
+        "Test link--this should take you the google doc you're working on. If it doesn't, google_drive_id is wrong": "",
+        "Test of the reference image. If this is blank, demo_image_id doesn't exist on the webpage (yet?)": "",
+        "image_url": "",
+        "TSV conversion: https://onlinetsvtools.com/convert-tsv-to-json": "",
+        "": ""
       }
     ]
   - label: 'Browse'

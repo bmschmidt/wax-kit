@@ -24,6 +24,7 @@
   import config from '$lib/config'
   import { assets } from '$app/paths';
   import { onMount } from 'svelte';
+  console.log({manifest})
   const { collection, pid } = $page.params
   const { base_url } = config;
   const google_id = config.collections[collection].metadata.google_drive_id
@@ -54,7 +55,9 @@
 <h1>
   {manifest.label}
 </h1>
-
+{#each tileSources as t}
+<a href={t.split("//")[1].split("/", 1)[1]}>{t.split("//")[1].split("/")[1]}</a>
+{/each}
 <div id="osd" class="image-viewer"></div>
 <div id=links style="display:flex">
   <!--This link is necessary to ensure the manifest is statically generated.-->

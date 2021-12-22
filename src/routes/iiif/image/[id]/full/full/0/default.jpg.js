@@ -1,3 +1,5 @@
+// Return the fullscreen JPG image.
+
 import config from '$lib/config';
 import { promises as fs } from 'fs';
 export async function get({ params }) {

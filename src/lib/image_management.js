@@ -16,19 +16,19 @@ const img_cache = new Map()
 
 export async function all_images(collection_name) {
   if (img_cache.get(collection_name)) {
-    return img_cache.get(collection_name)
+    return img_cache.get(collection_name);
   }
   const imgdir = `_data/` + 
     config.collections[collection_name].images.source;
 
   // This function was mostly written by Copilot.
-  const fs = await import('fs').then(d => d.promises)
-  const files = await fs.readdir(imgdir)
+  const fs = await import('fs').then(d => d.promises);
+  const files = await fs.readdir(imgdir);
 
   const images = new Map()
   for (let file of files) {
-    const location = `${imgdir}/${file}`
-    const stats = await fs.stat(location)
+    const location = `${imgdir}/${file}`;
+    const stats = await fs.stat(location).catch((err) => {isDirectory : () => false});
     if (stats.isDirectory()) {
       const pid = file;
       const matches = [];

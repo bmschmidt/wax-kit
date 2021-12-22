@@ -92,11 +92,16 @@ export async function cached_get(id: any,
   mod_time = undefined,
   empty_return = false): Promise<string | Buffer> {
   const mod_remote = mod_time ? mod_time : run_with_auth(remote_mod_time, id)
-  const mod_local = fs
+  const stats = fs
     .stat(location)
-    .then(d => new Date(d.mtime))
+    .catch(() => ({size: 0, mtime: new Date(0)}))
+
+  const is_empty = (await stats).size == 0
+
+  const mod_local = stats
+    .then(d => is_empty ? new Date(0) : new Date(d.mtime))
+    .catch(err => new Date(0))
     // if it doesn't exist, we just set the date a long time ago.
-  .catch(err => new Date(0))
 
   const val = Promise.all([mod_remote, mod_local])
     .then(
@@ -105,7 +110,6 @@ export async function cached_get(id: any,
         console.log("getting local", location)
         return empty_return ? "" : fs.readFile(location)
       } else {
-        console.log("getting remote", location, mod_remote, mod_local)
         let mimeType: string;
         if (location.endsWith("md")) {
           mimeType =  'text/html'

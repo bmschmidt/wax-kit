@@ -30,6 +30,7 @@
   .img-container {
     flex: 1 100px;
   }
+
   .card {
     display: flex;
     border: 2px solid #ccc;
@@ -37,9 +38,14 @@
     padding: 10px;
     margin: 10px;
     flex-direction: row;
-    max-width : 500px;
+    max-width : 600px;
   }
-
+  @media screen and (max-width: 800px) {
+    .card {
+      flex-direction: column;
+      max-width : 480px;
+    }
+  }
   .card-body {
     flex: 2 250px;
     max-width: 50%;

@@ -6,7 +6,6 @@
   import config from '$lib/config'
 
   const { base_url } = config;
-  console.log(pid, collection, config.collections[collection])
   const google_id = config.collections[collection].metadata.google_drive_id
 
   const manifestUrl = `${base_url}iiif/presentation/${collection}:${pid}/manifest.json`;
@@ -17,7 +16,6 @@
       const manifest = fetch(manifestUrl).then(d=>d.json());
       Promise.all([OSD,manifest])
       .then(([OpenSeadragon, manifest]) => {
-        console.log({manifest})
         const tileSources = manifest.sequences[0].canvases.map(val => {
           return val.images[0].resource.service['@id'] + "/info.json"
         })

@@ -10,7 +10,8 @@
 
 {#if record && waxid}
   <div class="thumb" id={waxid}>
-    <a sveltekit:prefetch href="{base_url}{record['wax:collection']}/{record.pid}/">
+    <!---XXXXXX-->
+    <a sveltekit:prefetch href="/{record['wax:collection']}/{record.pid}/">
       <figure>
         <img src="{thumbnail}" loading="lazy" alt="Improve alt-text: {record.label}" style="width:100%" />
         <figcaption>{record.label}</figcaption>
@@ -25,10 +26,10 @@
 <style>
 
 .thumb {
-  max-width: 17vw;
-  min-width: 17vw;
-  min-height: 17vw;
-  max-height: 17vw;
+  max-width: 20%;
+  min-width: 20%;
+  min-height: 20%;
+  max-height: 20%;
   margin: 2px 2px 2px 2px;
   font-size: 10px;
 }

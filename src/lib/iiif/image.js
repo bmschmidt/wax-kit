@@ -5,10 +5,6 @@ import config from '$lib/config'
 
 
 export async function image_manifest(id) {
-/*  console.log({browser, "hi" : "foo"})
-  if (browser) {
-    return fetch(`${config.iiif_root}/${id}`).then(res => res.json())
-  } */
   const fs = await import('fs').then(p => p.promises)
 
   // The collection is prefixes the pid with the collection.

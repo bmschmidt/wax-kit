@@ -22,7 +22,14 @@
 	<h1>About</h1>
 
   This is course work for <a href=https://benschmidt.org/bigdata21>the fall 2021 offering of the History of Big Data</a>
-  at NYU.
+  at NYU. I'm incredibly grateful to a large number of archivists, librarians, historians, and others who provided
+	suggestions on Twitter: you can read a number of those below the form below.
+
+	This course be offered again--if you wish to suggest another dataset for students to write about, please suggest it here.
+	
+	<p></p>
+
+	<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfsSireahCg6t5csIuXTFE5UJTwg3E08aqjCHudHbGopCw6Zg/viewform?embedded=true" width="640" height="1519" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
 
   <h2>Suggestions</h2>

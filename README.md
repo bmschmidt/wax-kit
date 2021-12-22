@@ -2,21 +2,25 @@
 
 An exploration svelte-kit based static site Wax clone using svelte-kit, a JS framework for static and dynamic websites.
 
-This project unifies code to do three things.
+This does three things at once, to provide an all-javascript approach to fast, reliable, responsive, and standards-oriented
+Javascript sites.
 
-1. (optionally) Use Google Drive to store the text of article exhibits, images, and collection csvs. These are handled by
-   adding `google_drive_id` into the files `_config.yml`; once this is done, you can sync the page against Google and download
-   any new or changed files while in dev mode or while building as a node target. (In static site mode, obviously, you can't
-   keep it synced to Google, because then it wouldn't be static. For Jekyll, you'd need to use my scripts 'rubberstamp' to do this.
-2. Build IIIF derivatives for images in a collection, and serve them statically using Level 0 compliance. 
-   For this, I use the `sharp` node
-   module which calls `libvips` (must be installed on the system). This is a lot faster than imagemagick. Both the image and presentation APIs for
-   IIIF are built entirely inside sveltekit as endpoints, making it easier to configure them and include metadata inside the fields.
-3. Build instantly updating (for development) and static (for permanent presentation) versions of websites.
+1. Build instantly updating (for development) and static (for permanent presentation) versions of websites.
    Here I use svelte-kit for both;
    unlike Jekyll, this allows extremely fast re-rerendering and only partial builds. (E.g., in development mode, IIIF derivatives do not need
    to be built up front--instead, they are generated *on page load* on the fly.) It also introduces an intermediate state--for
    development--in which information. 
+2. (optionally) Use Google Drive to store the text of article exhibits, images, and collection csvs. These are handled by
+   adding `google_drive_id` into the files `_config.yml`; once this is done, you can sync the page against Google and download
+   any new or changed files while in dev mode or while building as a node target. (In static site mode, obviously, you can't
+   keep it synced to Google, because then it wouldn't be static. But in developing a site collaboratively, it's very helpful
+   to be able to edit essays in Google Docs and metadata in Google Sheets. For Jekyll, you'd need to use my scripts 'rubberstamp' to do this.)
+3. Build IIIF derivatives for images in a collection, and serve them statically using Level 0 compliance. 
+   For this, I use the `sharp` node
+   module which calls `libvips` (must be installed on the system). This is a lot faster than imagemagick, currently used
+   by Wax. Also, the flexibility for editing IIIF manifests is greatly increased compared to Wax, because most of the IIIF manifests
+   are generated inside svelte-kit itself at endpoints. Both the image and presentation APIs for
+   IIIF are built entirely inside sveltekit as endpoints, making it easier to configure them and include metadata inside the fields.
 
 It does this while attempting to maintain back-compatability with the data ingest for
 Wax sites, so that you can simply drop in a wax `_data` folder and `_config.yml` file and

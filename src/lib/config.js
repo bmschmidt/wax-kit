@@ -37,7 +37,6 @@ export function get_exhibit_pages(conf) {
   if (!exhibits.length) {return}
   exhibits = exhibits[0]
   if (!exhibits || !exhibits.sub) {return []}
-  console.log(exhibits.sub)
   return exhibits.sub
 }
 

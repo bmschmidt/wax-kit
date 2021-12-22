@@ -4,6 +4,10 @@
 	import config from '$lib/config';
   import { data } from '$lib/data'
 
+	const collections = new Set(["all-collections",...[...Object.keys(config.collections)]])
+
+	$: current_slug = $page.path.split("/").pop()
+
 </script>
 
 <header>
@@ -18,12 +22,10 @@
 					🐝
 				</a>
 			</li>
-			<li class:active={$page.path === '/'}><a sveltekit:prefetch href={base == '' ? "/" : base }>Home</a></li>
-			<li class:active={$page.path === '/about'}><a sveltekit:prefetch href={base}/about>About the data</a></li>
-			<li class:active={$page.path === '/students'}><a sveltekit:prefetch href={base}/students>Student Instructions</a></li>
-			{#each Object.keys(config.collections) as collection}
-			<li class:active={$page.path === "/" + collection}><a sveltekit:prefetch href={base}/{collection}>{collection}</a></li>
-			{/each}
+			<li class:active={current_slug === ''}><a sveltekit:prefetch href={base == '' ? "/" : base }>Home</a></li>
+			<li class:active={current_slug === 'about'}><a sveltekit:prefetch href={base}/about>About the data</a></li>
+			<li class:active={current_slug === 'students'}><a sveltekit:prefetch href={base}/students>Student Instructions</a></li>
+			<li class:active={collections.has(current_slug)}><a sveltekit:prefetch href={base}/all-collections>Collections</a></li>
 			<li class:active={$page.path === '/items'}><a sveltekit:prefetch href={base}/items>Item categories</a></li>
 			<li class:active={$page.path === '/table'}><a sveltekit:prefetch href={base}/table>Data Table</a></li>
 			<li>
