@@ -10,22 +10,25 @@ import { dev } from '$app/env'
 function build_config() {
 
   const configuration = load(t)
-  if (configuration.iiif_root === undefined) {
-    configuration.iiif_root = dev ? 
-      "http://localhost:3000/iiif/image" :
-       configuration.url + "/iiif/image"
+
+  if (dev) {
+    configuration.url = 'http://localhost:3000';
+    configuration.baseurl = '';
   }
 
-  {
-    configuration.base_url = dev ?
-      "http://localhost:3000/" : 
-      configuration.url
+
+  configuration.full_url = `${configuration.url}/${configuration.baseurl}`;
+  configuration.local_url = `/${configuration.baseurl}`;
+
+  if (configuration.baseurl == '') {
+    configuration.full_url = `${configuration.url}`;
+    configuration.local_url = ``;
   }
 
   test_config(configuration)
-  return configuration 
-}
+  return configuration;
 
+}
 
 const config = build_config()
 export default config;

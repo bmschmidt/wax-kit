@@ -3,7 +3,7 @@ import sharp from 'sharp';
 import fs from 'fs';
 import config from '$lib/config';
 
-const { iiif_root } = config;
+const { full_url } = config;
 export default async function tile_image(local_path, id) {
   console.log("TILING", id)
   // Creates IIIF tiles of an image using the 'sharp' library.
@@ -14,8 +14,10 @@ export default async function tile_image(local_path, id) {
   if (!fs.existsSync(local_path)) {
     throw new Error(`Can't find file at ${local_path}`)
   }
+  console.log("FOUND")
 
   if (fs.existsSync(`${directory}/info.json`)) {
+    console.log("FOUND")
     return;
   }
 
@@ -26,7 +28,7 @@ export default async function tile_image(local_path, id) {
   const val = await sharp(local_path)
     .tile({
       layout: "iiif",
-      id: iiif_root
+      id: full_url + "/iiif/image/"
     })
     .toFile(directory);
   return val;

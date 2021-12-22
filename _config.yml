@@ -11,8 +11,8 @@
 
 title:            'Paper Databases'
 description:      'Data on paper'
-url:              'https://paperdata.benschmidt.org/'
-baseurl:          '/'
+url:              'https://paperdata.benschmidt.org'
+baseurl:          ''
 copyright:        'copyright 2021'
 logo:             '/assets/logo.png'
 

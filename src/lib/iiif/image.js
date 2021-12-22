@@ -26,6 +26,6 @@ export async function image_manifest(id) {
     .then(d => JSON.parse(d))
   // We're going to regenerate the http portion of the id depending
   // on whether we're in dev or build mode.
-  manifest['@id'] = `${config.iiif_root}/${id}`;
+  manifest['@id'] = `${config.full_url}/iiif/image/${id}`;
   return manifest;
 }

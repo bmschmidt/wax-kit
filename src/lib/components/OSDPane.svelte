@@ -5,10 +5,10 @@
   import { onMount } from 'svelte';
   import config from '$lib/config'
 
-  const { base_url } = config;
+  const { local_url } = config;
   const google_id = config.collections[collection].metadata.google_drive_id
 
-  const manifestUrl = `${base_url}iiif/presentation/${collection}:${pid}/manifest.json`;
+  const manifestUrl = `${local_url}/iiif/presentation/${collection}:${pid}/manifest.json`;
 
   onMount(() => 
     { 

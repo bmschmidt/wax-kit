@@ -1,45 +1,49 @@
 <script context="module">
+  import config from '$lib/config';
+  const { local_url } = config;
   export async function load({ page, fetch }) {
     const {collection, pid} = page.params;
-    const host = `../../..`;
-    const manifest = await fetch(`${host}/iiif/presentation/${collection}:${pid}/manifest.json`)
+    const murl = `${local_url}/iiif/presentation/${collection}:${pid}/manifest.json`;
+    const manifest = await fetch(murl)
        .then(d => d.json())
 
     const tileSources = manifest.sequences[0].canvases.map(val => {
-      console.log(val)
       return val.images[0].resource.service['@id'] + "/info.json"
     })
-    return { props: { 
-      manifest : JSON.parse(JSON.stringify(manifest)),
-      tileSources : JSON.parse(JSON.stringify(tileSources))
-    }
+
+    return { 
+      props: { 
+        manifest : JSON.parse(JSON.stringify(manifest)),
+        tileSources : JSON.parse(JSON.stringify(tileSources))
+      }
     }
   }
 </script>
 
 <script>
-  export let tileSources = [];
+  export let tileSources;
   export let manifest;
   import { page } from "$app/stores";
-  import config from '$lib/config'
+//  import config from '$lib/config'
   import { assets } from '$app/paths';
   import { onMount } from 'svelte';
-  console.log({manifest})
   const { collection, pid } = $page.params
-  const { base_url } = config;
+  const { local_url } = config;
   const google_id = config.collections[collection].metadata.google_drive_id
   
-  const manifestUrl = `${base_url}iiif/presentation/${collection}:${pid}/manifest.json`;
+  const manifestUrl = `${local_url}/iiif/presentation/${collection}:${pid}/manifest.json`;
 
   function include_field(k) {
     if (k.startsWith("wax:")) {return false}
     if (k.startsWith("Student ")) {return false}
     return true
   }
+  const links = tileSources.map(t => t.split("//")[1].split("/").slice(1).join("/"))
+
 
   onMount(() => 
     { import('openseadragon').then(OpenSeadragon =>
-    OpenSeadragon.default({
+    { OpenSeadragon.default({
         id:                 "osd",
         prefixUrl: `${assets}/assets/openseadragon/images/`,
         preserveViewport:   true,
@@ -49,15 +53,14 @@
         sequenceMode:       true,
         tileSources:        tileSources,
     })
+    }
   )})
+
 </script>
 
 <h1>
   {manifest.label}
 </h1>
-{#each tileSources as t}
-<a href={t.split("//")[1].split("/", 1)[1]}>{t.split("//")[1].split("/")[1]}</a>
-{/each}
 <div id="osd" class="image-viewer"></div>
 <div id=links style="display:flex">
   <!--This link is necessary to ensure the manifest is statically generated.-->
@@ -77,6 +80,12 @@
   {/each}
 </dl>
 
+<div id=links>
+  Individual page manifests: {#each links as link, i}
+  <a href="/{link}"> {i} </a>
+{/each}
+
+</div>
 
 <style>
   #osd {

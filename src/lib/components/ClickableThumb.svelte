@@ -3,15 +3,17 @@
   export let record;
   const waxid = record['wax:id']
   import config from '$lib/config';
-  const { base_url } = config;
+  const { local_url } = config;
+  console.log({local_url})
   const collection = record['wax:collection']
-  const thumbnail = `${base_url}thumbnails/${waxid}.jpg`;
+  const thumbnail = `${local_url}/thumbnails/${waxid}.jpg`;
+  const remote = `${local_url}/${collection}/${record.pid}`;
 </script>
 
 {#if record && waxid}
   <div class="thumb" id={waxid}>
     <!---XXXXXX-->
-    <a sveltekit:prefetch href="/{record['wax:collection']}/{record.pid}/">
+    <a sveltekit:prefetch href="{remote}">
       <figure>
         <img src="{thumbnail}" loading="lazy" alt="Improve alt-text: {record.label}" style="width:100%" />
         <figcaption>{record.label}</figcaption>

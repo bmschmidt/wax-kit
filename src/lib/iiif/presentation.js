@@ -1,11 +1,9 @@
 import config from '$lib/config'
-import { dev } from '$app/env';
 import { image_manifest } from '$lib/iiif/image';
 import { reparse_all_datasets } from '$lib/records';
 
 const img_cache = {};
-const root = dev ? "" : config.url 
-const { iiif_root } = config;
+const { full_url } = config;
 
 export async function thumbnail(pid) {
   try {
@@ -53,17 +51,17 @@ export async function manifest(id) {
 
   const manifest = {
       "@context": "http://iiif.io/api/presentation/2/context.json",
-      "@id": `${iiif_root}/presentation/${id}`,
+      "@id": `${full_url}/iiif/image/presentation/${id}`,
       "@type": "sc:Manifest",
       // The metadata is filled directly from the wax metadata.
       "metadata": Object.entries(d).filter(([label, value]) => label && value).map(([label, value]) => ({label: label, value: value})),
       // The IIIF label is the same as the Wax label.
       "label": `${d.label}`,
-      "thumbnail": `${root}/thumbnails/${individual_images[0]}.jpg`,
+      "thumbnail": `${full_url}/thumbnails/${individual_images[0]}.jpg`,
       "viewingDirection": "left-to-right",
       "viewingHint": "individuals",
       "sequences": sequences,
-      "full": `${iiif_root}/${first_image}/full/full/0/default.jpg`,
+      "full": `${full_url}/iiif/image/${first_image}/full/full/0/default.jpg`,
 //      "fullwidth": `${iiif_root}/${first_image_id}/full/${first_image.width},/0/default.jpg`
   }
   return manifest;
@@ -72,21 +70,16 @@ export async function manifest(id) {
 export function img_to_canvas(img) {
   let id = img['@id']
   const filename = id.split('/').pop();
-  if (dev) {
-    id = `http://localhost:3000/iiif/image/${filename}`
-  }
-  const canvas = `${root}/iiif/canvas/${filename}.json`
+  const canvas = `${full_url}/iiif/canvas/${filename}.json`
   return {
     "@type": "sc:Canvas",
     "@id": canvas,
     "label": "front",
-    "width": 2501,
-    "height": 4331,
-    "thumbnail": `${iiif_root}/${filename}/full/250,/0/default.jpg`,
+    "thumbnail": `${full_url}/iiif/image/${filename}/full/250,/0/default.jpg`,
     "images": [
       {
         "@type": "oa:Annotation",
-        "@id": `${root}/iiif/annotation/${filename}.json`,
+        "@id": `${full_url}/iiif/annotation/${filename}.json`,
         "motivation": "sc:painting",
         "resource": {
           "@id": `${id}/full/full/0/default.jpg`,
@@ -115,7 +108,7 @@ export async function sequence(id) {
   }
   const sequence = 
     {
-      "@id": `${root}/iiif/sequence/${id}.json`,
+      "@id": `${full_url}/iiif/sequence/${id}.json`,
       "@type": "sc:Sequence",
       "canvases": images.map(d => img_to_canvas(d)), 
     }
